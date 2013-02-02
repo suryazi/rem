@@ -52,6 +52,11 @@ grails.project.dependency.resolution = {
         compile ":build-test-data:2.0.3"
         build ":auto-test:1.0.1"
         
+        //UI plugins 
+        compile ":easygrid:1.2.1"
+        compile ":easygrid:1.0.0"
+        compile ":twitter-bootstrap:2.2.2"
+        runtime ":fields:1.3"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         runtime ":zipped-resources:1.0"

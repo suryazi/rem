@@ -9,7 +9,7 @@
 	<body>
 		<div class="row-fluid">
 
-			<g:render template="/sidemenu"/>
+			<g:render template="/templates/rem/sidemenu"/>
 			
 			<div class="span9">
 

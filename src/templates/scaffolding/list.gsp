@@ -10,7 +10,7 @@
 	<body>
 		<div class="row-fluid">
 			
-			<g:render template="/sidemenu" model="[active: 'list']"/>
+			<g:render template="/templates/rem/sidemenu" model="[active: 'list']"/>
 
 			<div class="span9">
 				

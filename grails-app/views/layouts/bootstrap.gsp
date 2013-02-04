@@ -58,7 +58,7 @@
 			<hr>
 
 			<footer>
-                          <pmp:copyright startYear="2012">Al Woroud Real Estate Company.</pmp:copyright>
+                          <rem:copyright startYear="2012">Al Woroud Real Estate Company.</rem:copyright>
 			</footer>
 		</div>
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="falblawi" name="rem.DateTagLibTests" tests="1" time="0.366" timestamp="2013-02-04T13:33:50">
+  <properties />
+  <testcase classname="rem.DateTagLibTests" name="testSomething" time="0.365" />
+  <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+  <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+</testsuite>

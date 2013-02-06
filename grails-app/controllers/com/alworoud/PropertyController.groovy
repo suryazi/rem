@@ -64,11 +64,6 @@ class PropertyController {
                         editable false
                     }
                 }
-                street {
-                    jqgrid {
-                        editable false
-                    }
-                }
                 area {
                     jqgrid {
                         editable false

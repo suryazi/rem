@@ -7,7 +7,7 @@
 		<title><g:message code="default.grid.label" args="[entityName]" /></title>
                 <r:script>
                     function linkShowId(cellvalue, options, rowObject) {
-                        return "<a href='/rem/owner/property/" + cellvalue + "'>" + cellvalue + "</a> ";
+                        return "<a href='/rem/property/show/" + cellvalue + "'>" + cellvalue + "</a> ";
                     }
                 </r:script>
                 <r:require modules="easygrid-jqgrid-dev,export"/>

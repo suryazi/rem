@@ -9,7 +9,7 @@ class UnitController {
     static grids ={
         unitJQGrid {
             dataSourceType 'gorm'
-            domainClass Owner
+            domainClass Unit
             gridImpl 'jqgrid'
             inlineEdit true
             jqgrid {
@@ -54,12 +54,22 @@ class UnitController {
                         formatter 'linkShowId'
                     }
                 }
-                name {
+                unitNum {
                     jqgrid {
                         editable false
                     }
                 }
-                idNum {
+                unitType {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                status {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                remarks {
                     jqgrid {
                         editable false
                     }

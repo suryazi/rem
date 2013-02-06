@@ -3,11 +3,11 @@
 <html>
 	<head>
 		<meta name="layout" content="bootstrap">
-                <g:set var="entityName" value="${message(code: 'property.label', default: 'Property')}" />
+                <g:set var="entityName" value="${message(code: 'unit.label', default: 'Unit')}" />
 		<title><g:message code="default.grid.label" args="[entityName]" /></title>
                 <r:script>
                     function linkShowId(cellvalue, options, rowObject) {
-                        return "<a href='/rem/owner/property/" + cellvalue + "'>" + cellvalue + "</a> ";
+                        return "<a href='/rem/unit/show/" + cellvalue + "'>" + cellvalue + "</a> ";
                     }
                 </r:script>
                 <r:require modules="easygrid-jqgrid-dev,export"/>
@@ -25,8 +25,8 @@
 				<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
 				</g:if>
                           
-                                <grid:grid id='jqgridinitial' name='propertyJQGrid' />
-                                <grid:exportButton name='propertyJQGrid'/>
+                                <grid:grid id='jqgridinitial' name='unitJQGrid' />
+                                <grid:exportButton name='unitJQGrid'/>
                         </div>
                 </div>
 	</body>

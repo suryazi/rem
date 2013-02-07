@@ -89,6 +89,78 @@ class PropertyController {
                 }
             }
         }
+        
+        propertyJQGridSelection {
+            dataSourceType 'gorm'
+            domainClass Property
+            gridImpl 'jqgrid'
+            inlineEdit false
+            jqgrid {
+                width '"900"'
+            }
+            columns {
+                id {
+                    filterClosure {params ->
+                        def val=params.id,op
+                        if (val.length() > 2){
+                            op=params.id[1]
+                            if (op == '='){
+                                val=params.id[2..-1]
+                                op=params.id[0]
+                                if (op == '<'){
+                                    le('id',"${val}".toLong())
+                                }else if (op == '>'){
+                                    ge('id',"${val}".toLong())
+                                }
+                            }
+                        } else if (params.id.length() > 1) {
+                            val=params.id[1..-1]
+                            op=params.id[0]
+                            if (op == '<'){
+                                lt('id',"${val}".toLong())
+                            }else if (op == '>'){
+                                gt('id',"${val}".toLong())
+                            }else if (op == '='){
+                                eq('id',"${val}".toLong())
+                            }
+                        }
+                    }
+                    jqgrid{
+                        editable false
+                    }
+                }
+                propNum {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                propType {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                area {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                city {
+                    jqgrid {
+                        editable false
+                    }
+                }
+            }
+            autocomplete {
+                idProp 'id'
+//                labelProp 'name'
+                labelValue { val, params ->
+                    "${val.propNum} (${val.area} ${val.city})"
+                }
+                textBoxFilterClosure { filter ->
+                    ilike('propNum', "%${filter.paramValue}%")
+                }
+            }
+        }
     }
     
     def grid(){}

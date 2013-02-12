@@ -6,6 +6,8 @@ import org.springframework.dao.DataIntegrityViolationException
 @Easygrid
 class OwnerController {
     
+    def filterService
+    
     static grids ={
         ownerJQGrid {
             dataSourceType 'gorm'

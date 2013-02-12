@@ -6,6 +6,8 @@ import org.springframework.dao.DataIntegrityViolationException
 @Easygrid
 class PropertyController {
 
+    static allowedMethods = [create: ['GET', 'POST'], edit: ['GET', 'POST'], delete: 'POST']
+    
     static grids ={
         propertyJQGrid {
             dataSourceType 'gorm'
@@ -192,5 +194,106 @@ class PropertyController {
     }
     
     def grid(){}
-    static scaffold = true
+
+    def index() {
+        redirect action: 'list', params: params
+    }
+
+    def list() {
+        params.max = Math.min(params.max ? params.int('max') : 10, 100)
+        [propertyInstanceList: Property.list(params), propertyInstanceTotal: Property.count()]
+    }
+
+    def create() {
+		switch (request.method) {
+		case 'GET':
+        	[propertyInstance: new Property(params)]
+			break
+		case 'POST':
+	        def propertyInstance = new Property(params)
+	        if (!propertyInstance.save(flush: true)) {
+	            render view: 'create', model: [propertyInstance: propertyInstance]
+	            return
+	        }
+
+			flash.message = message(code: 'default.created.message', args: [message(code: 'property.label', default: 'Property'), propertyInstance.id])
+	        redirect action: 'show', id: propertyInstance.id
+			break
+		}
+    }
+
+    def show() {
+        def propertyInstance = Property.get(params.id)
+        if (!propertyInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'property.label', default: 'Property'), params.id])
+            redirect action: 'list'
+            return
+        }
+
+        [propertyInstance: propertyInstance]
+    }
+
+    def edit() {
+		switch (request.method) {
+		case 'GET':
+	        def propertyInstance = Property.get(params.id)
+	        if (!propertyInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'property.label', default: 'Property'), params.id])
+	            redirect action: 'list'
+	            return
+	        }
+
+	        [propertyInstance: propertyInstance]
+			break
+		case 'POST':
+	        def propertyInstance = Property.get(params.id)
+	        if (!propertyInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'property.label', default: 'Property'), params.id])
+	            redirect action: 'list'
+	            return
+	        }
+
+	        if (params.version) {
+	            def version = params.version.toLong()
+	            if (propertyInstance.version > version) {
+	                propertyInstance.errors.rejectValue('version', 'default.optimistic.locking.failure',
+	                          [message(code: 'property.label', default: 'Property')] as Object[],
+	                          "Another user has updated this Property while you were editing")
+	                render view: 'edit', model: [propertyInstance: propertyInstance]
+	                return
+	            }
+	        }
+
+	        propertyInstance.properties = params
+
+	        if (!propertyInstance.save(flush: true)) {
+	            render view: 'edit', model: [propertyInstance: propertyInstance]
+	            return
+	        }
+
+			flash.message = message(code: 'default.updated.message', args: [message(code: 'property.label', default: 'Property'), propertyInstance.id])
+	        redirect action: 'show', id: propertyInstance.id
+			break
+		}
+    }
+
+    def delete() {
+        def propertyInstance = Property.get(params.id)
+        if (!propertyInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'property.label', default: 'Property'), params.id])
+            redirect action: 'list'
+            return
+        }
+
+        try {
+            propertyInstance.delete(flush: true)
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'property.label', default: 'Property'), params.id])
+            redirect action: 'list'
+        }
+        catch (DataIntegrityViolationException e) {
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'property.label', default: 'Property'), params.id])
+            redirect action: 'show', id: params.id
+        }
+    }
+    
 }

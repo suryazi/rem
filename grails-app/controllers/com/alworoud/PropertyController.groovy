@@ -155,8 +155,6 @@ class PropertyController {
                     }
                     jqgrid{
                         editable false
-                        //this will create a link to the show page
-                        formatter 'linkShowId'
                     }
                 }
                 propNum {

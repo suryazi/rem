@@ -5,6 +5,7 @@
 		<meta name="layout" content="bootstrap">
 		<g:set var="entityName" value="${message(code: 'unit.label', default: 'Unit')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
+                <r:require modules="easygrid-selection-dev"/>
 	</head>
 	<body>
 		<div class="row-fluid">
@@ -35,6 +36,18 @@
 					<g:form class="form-horizontal" action="create" >
 						<fieldset>
 							<f:all bean="unitInstance"/>
+                                                        
+                                                        <div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'prop', 'error')} required">
+                                                                <label for="prop">
+                                                                        <g:message code="unit.prop.label" default="Prop" />
+                                                                        <span class="required-indicator">*</span>
+                                                                </label>
+                                                                <grid:selection id="property" title="Select the property"
+                                                                        gridName="propertyJQGridSelection" controller="property"
+                                                                        name="property.id" value="${unitInstance?.property?.id}"
+                                                                />
+                                                        </div>
+                                                        
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

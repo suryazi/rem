@@ -69,7 +69,7 @@ class PropertyController {
                         formatter 'linkShowId'
                     }
                 }
-                propNum {
+                propId {
                     jqgrid {
                         editable false
                     }
@@ -157,7 +157,7 @@ class PropertyController {
                         editable false
                     }
                 }
-                propNum {
+                propId {
                     jqgrid {
                         editable false
                     }
@@ -182,10 +182,13 @@ class PropertyController {
                 idProp 'id'
 //                labelProp 'name'
                 labelValue { val, params ->
-                    "${val.propNum} (${val.area} ${val.city})"
+                    "${val.propId} (${val.area} ${val.city})"
                 }
                 textBoxFilterClosure { filter ->
-                    ilike('propNum', "%${filter.paramValue}%")
+                    ilike('propId', "%${filter.paramValue}%")
+                }
+                constraintsFilterClosure { filter ->
+                    
                 }
             }
         }

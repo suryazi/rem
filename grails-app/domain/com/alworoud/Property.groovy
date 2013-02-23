@@ -1,7 +1,7 @@
 package com.alworoud
 
 class Property {
-    String propNum
+    String propId
     String propType
     String street
     String area
@@ -11,7 +11,7 @@ class Property {
     Date dateCreated
     Date lastUpdated
     static constraints = {
-        propNum(blank:false)
+        propId(blank:false)
         propType(blank:false, inList:(['Building','Compound','Land']))
         street(nullable:true)
         area(nullable:true)

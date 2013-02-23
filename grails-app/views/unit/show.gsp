@@ -24,10 +24,10 @@
 
 				<dl>
 				
-					<g:if test="${unitInstance?.unitNum}">
-						<dt><g:message code="unit.unitNum.label" default="Unit Num" /></dt>
+					<g:if test="${unitInstance?.unitId}">
+						<dt><g:message code="unit.unitId.label" default="Unit Id" /></dt>
 						
-							<dd><g:fieldValue bean="${unitInstance}" field="unitNum"/></dd>
+							<dd><g:fieldValue bean="${unitInstance}" field="unitId"/></dd>
 						
 					</g:if>
 				

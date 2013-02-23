@@ -26,7 +26,7 @@
 					<thead>
 						<tr>
 						
-							<g:sortableColumn property="propNum" title="${message(code: 'property.propNum.label', default: 'Prop Num')}" />
+							<g:sortableColumn property="propId" title="${message(code: 'property.propId.label', default: 'Prop Id')}" />
 						
 							<g:sortableColumn property="propType" title="${message(code: 'property.propType.label', default: 'Prop Type')}" />
 						
@@ -45,7 +45,7 @@
 					<g:each in="${propertyInstanceList}" var="propertyInstance">
 						<tr>
 						
-							<td>${fieldValue(bean: propertyInstance, field: "propNum")}</td>
+							<td>${fieldValue(bean: propertyInstance, field: "propId")}</td>
 						
 							<td>${fieldValue(bean: propertyInstance, field: "propType")}</td>
 						

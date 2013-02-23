@@ -26,7 +26,7 @@
 					<thead>
 						<tr>
 						
-							<g:sortableColumn property="unitNum" title="${message(code: 'unit.unitNum.label', default: 'Unit Num')}" />
+							<g:sortableColumn property="unitId" title="${message(code: 'unit.unitId.label', default: 'Unit Id')}" />
 						
 							<g:sortableColumn property="unitType" title="${message(code: 'unit.unitType.label', default: 'Unit Type')}" />
 						
@@ -45,7 +45,7 @@
 					<g:each in="${unitInstanceList}" var="unitInstance">
 						<tr>
 						
-							<td>${fieldValue(bean: unitInstance, field: "unitNum")}</td>
+							<td>${fieldValue(bean: unitInstance, field: "unitId")}</td>
 						
 							<td>${fieldValue(bean: unitInstance, field: "unitType")}</td>
 						

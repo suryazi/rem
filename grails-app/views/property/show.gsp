@@ -24,10 +24,10 @@
 
 				<dl>
 				
-					<g:if test="${propertyInstance?.propNum}">
-						<dt><g:message code="property.propNum.label" default="Prop Num" /></dt>
+					<g:if test="${propertyInstance?.propId}">
+						<dt><g:message code="property.propId.label" default="Prop Id" /></dt>
 						
-							<dd><g:fieldValue bean="${propertyInstance}" field="propNum"/></dd>
+							<dd><g:fieldValue bean="${propertyInstance}" field="propId"/></dd>
 						
 					</g:if>
 				

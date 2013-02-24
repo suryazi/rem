@@ -69,7 +69,7 @@ class UnitController {
                         formatter 'linkShowId'
                     }
                 }
-                unitNum {
+                unitId {
                     jqgrid {
                         editable false
                     }

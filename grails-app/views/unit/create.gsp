@@ -41,26 +41,13 @@
                                                           <f:field property="desc"/>
                                                           <f:field property="status"/>
                                                           <f:field property="remarks"/>
-                                                        </f:with>
-							<!--<f:all bean="unitInstance"/>
-                                                        
-                                                        <div class="fieldcontain ${hasErrors(bean: unitInstance, field: 'prop', 'error')} required">
-                                                                <label for="prop">
-                                                                        <g:message code="unit.prop.label" default="Prop" />
-                                                                        <span class="required-indicator">*</span>
-                                                                </label>
-                                                                <grid:selection id="property" title="Select the property"
-                                                                        gridName="propertyJQGridSelection" controller="property"
-                                                                        name="property.id" value=""
-                                                                />
-                                                        </div>-->                                                        
-                                                        
+                                                        </f:with>                                                    
                                                         <div class="control-group">
                                                                 <label class="control-label" for="prop">Property</label>
                                                                 <div class="controls">
-                                                                <grid:selection id="property" title="Select the property"
+                                                                <grid:selection title="Select the property"
                                                                         gridName="propertyJQGridSelection" controller="property"
-                                                                        name="property.id" value=""
+                                                                        value="" id="prop" name="prop.id"
                                                                 />
                                                                 </div>
                                                         </div>

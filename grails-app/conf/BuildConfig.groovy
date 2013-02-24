@@ -54,7 +54,7 @@ grails.project.dependency.resolution = {
         
         //UI plugins 
         compile ":easygrid:1.2.1"
-        compile ":twitter-bootstrap:2.2.2"
+        compile ":twitter-bootstrap:2.3.0"
         runtime ":fields:1.3"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities

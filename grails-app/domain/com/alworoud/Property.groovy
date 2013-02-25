@@ -20,4 +20,8 @@ class Property {
         remarks(nullable:true)
     }
     static hasMany = [units:Unit]
+    
+    String toString(){
+        "${propId} (${area} - ${city})"
+    }
 }

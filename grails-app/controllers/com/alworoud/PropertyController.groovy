@@ -182,7 +182,7 @@ class PropertyController {
                 idProp 'id'
 //                labelProp 'name'
                 labelValue { val, params ->
-                    "${val.propId} (${val.area} ${val.city})"
+                    "${val.propId} (${val.area} - ${val.city})"
                 }
                 textBoxFilterClosure { filter ->
                     ilike('propId', "%${filter.paramValue}%")

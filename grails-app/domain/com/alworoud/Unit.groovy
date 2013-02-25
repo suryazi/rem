@@ -16,4 +16,8 @@ class Unit {
         remarks(nullable:true)
     }
     static belongsTo = [prop : Property]
+    
+    String toString(){
+        "${unitId} (${unitType})"
+    }
 }

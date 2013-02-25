@@ -5,6 +5,7 @@
 		<meta name="layout" content="bootstrap">
 		<g:set var="entityName" value="${message(code: 'unit.label', default: 'Unit')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+                <r:require modules="easygrid-selection-dev"/>
 	</head>
 	<body>
 		<div class="row-fluid">
@@ -35,7 +36,22 @@
 					<g:form class="form-horizontal" action="edit" id="${unitInstance?.id}" >
 						<g:hiddenField name="version" value="${unitInstance?.version}" />
 						<fieldset>
-							<f:all bean="unitInstance"/>
+							<f:with bean="unitInstance">
+                                                          <f:field property="unitId"/>
+                                                          <f:field property="unitType"/>
+                                                          <f:field property="desc"/>
+                                                          <f:field property="status"/>
+                                                          <f:field property="remarks"/>
+                                                        </f:with>                                                    
+                                                        <div class="control-group">
+                                                                <label class="control-label" for="prop">Property</label>
+                                                                <div class="controls">
+                                                                  <grid:selection id="prop" name="prop.id" title="Select the property"
+                                                                          gridName="propertyJQGridSelection" controller="property"
+                                                                          value="${unitInstance?.prop?.id}" 
+                                                                  />
+                                                                </div>
+                                                        </div>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

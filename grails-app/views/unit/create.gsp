@@ -45,10 +45,10 @@
                                                         <div class="control-group">
                                                                 <label class="control-label" for="prop">Property</label>
                                                                 <div class="controls">
-                                                                <grid:selection title="Select the property"
-                                                                        gridName="propertyJQGridSelection" controller="property"
-                                                                        value="" id="prop" name="prop.id"
-                                                                />
+                                                                  <grid:selection title="Select the property"
+                                                                          gridName="propertyJQGridSelection" controller="property"
+                                                                          value="" id="prop" name="prop.id"
+                                                                  />
                                                                 </div>
                                                         </div>
                                                         

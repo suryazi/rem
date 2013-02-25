@@ -9,7 +9,7 @@ class Unit {
     Date dateCreated
     Date lastUpdated
     static constraints = {
-        unitId(blank:false)
+        unitId(unique: 'prop', blank:false)
         unitType(blank:false,inList:(['Villa','Apartment','Shop','Space','Land','Building']))
         desc(nullable: true)
         status(blank:false,inList:(['Vacant','Rent','Lease','Maintenance','Sale','Sold']))

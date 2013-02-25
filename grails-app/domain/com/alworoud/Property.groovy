@@ -11,7 +11,7 @@ class Property {
     Date dateCreated
     Date lastUpdated
     static constraints = {
-        propId(blank:false)
+        propId(unique:true, blank:false)
         propType(blank:false, inList:(['Building','Compound','Land']))
         street(nullable:true)
         area(nullable:true)

@@ -47,7 +47,7 @@
                                                                 <div class="controls">
                                                                   <grid:selection title="Select the property"
                                                                           gridName="propertyJQGridSelection" controller="property"
-                                                                          value="" id="prop" name="prop.id"
+                                                                          value="${unitInstance?.prop?.id}" id="prop" name="prop.id"
                                                                   />
                                                                 </div>
                                                         </div>

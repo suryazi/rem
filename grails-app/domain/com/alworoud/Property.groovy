@@ -19,7 +19,8 @@ class Property {
         status(blank:false,inList:(['Vacant','Rent','Lease','Maintenance','Sale','Sold']))
         remarks(nullable:true)
     }
-    static hasMany = [units:Unit]
+    static hasMany = [owners:Owner,units:Unit]
+    static belongsTo = Owner
     
     String toString(){
         "${propId} (${area} - ${city})"

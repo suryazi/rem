@@ -10,4 +10,5 @@ class Owner {
         name(blank:false)
         idNum(unique:true, blank:false)
     }
+    static hasMany = [prop:Property]
 }

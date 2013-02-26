@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="falblawi" id="0" name="PropertyControllerTests" package="com.alworoud" tests="1" time="0.492" timestamp="2013-02-04T13:37:30">
+  <testsuite errors="0" failures="0" hostname="falblawi" id="0" name="OwnerTests" package="com.alworoud" tests="1" time="0.81" timestamp="2013-02-26T09:04:06">
       <properties />
 
-      <testcase classname="com.alworoud.PropertyControllerTests" name="testSomething" time="0.491" />
+      <testcase classname="com.alworoud.OwnerTests" name="testOwner" time="0.808" />
 
-      <system-out><![CDATA[--Output from testSomething--
+      <system-out><![CDATA[--Output from testOwner--
 ]]></system-out>
 
-      <system-err><![CDATA[--Output from testSomething--
-]]></system-err>
-
-  </testsuite>
-  <testsuite errors="0" failures="0" hostname="falblawi" id="1" name="UnitControllerTests" package="com.alworoud" tests="1" time="0.729" timestamp="2013-02-04T13:37:30">
-      <properties />
-
-      <testcase classname="com.alworoud.UnitControllerTests" name="testSomething" time="0.425" />
-
-      <system-out><![CDATA[--Output from testSomething--
-]]></system-out>
-
-      <system-err><![CDATA[--Output from testSomething--
+      <system-err><![CDATA[--Output from testOwner--
 ]]></system-err>
 
   </testsuite>

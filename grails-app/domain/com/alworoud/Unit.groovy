@@ -15,7 +15,7 @@ class Unit {
         status(blank:false,inList:(['Vacant','Rent','Lease','Maintenance','Sale','Sold']))
         remarks(nullable:true)
     }
-    static belongsTo = [prop : Property]
+    static belongsTo = [prop:Property]
     
     String toString(){
         "${unitId} (${unitType})"

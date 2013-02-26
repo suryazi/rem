@@ -16,6 +16,6 @@ class PropertyTests {
     
     void testProperty() {
         Property property=Property.build()
-        assertNotNull property
+        assertNotNull property.propId
     }
 }

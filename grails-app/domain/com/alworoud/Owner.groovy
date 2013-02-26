@@ -11,4 +11,8 @@ class Owner {
         idNum(unique:true, blank:false)
     }
     static hasMany = [prop:Property]
+    
+    String toString(){
+        "${name} (${idNum})"
+    }
 }

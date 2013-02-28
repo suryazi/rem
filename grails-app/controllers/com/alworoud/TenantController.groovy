@@ -4,21 +4,21 @@ import org.grails.plugin.easygrid.Easygrid
 import org.springframework.dao.DataIntegrityViolationException
 
 @Easygrid
-class OwnerController {
+class TenantController {
 
     static allowedMethods = [create: ['GET', 'POST'], edit: ['GET', 'POST'], delete: 'POST']
     
     static grids ={
-        ownerJQGrid {
+        tenantJQGrid {
             dataSourceType 'gorm'
-            domainClass Owner
+            domainClass Tenant
             gridImpl 'jqgrid'
             inlineEdit true
             jqgrid {
                 width '"750"'
             }
             export {
-                export_title 'Owner'
+                export_title 'Tenant'
                 pdf {
                     'border.color' java.awt.Color.BLUE
                 }
@@ -69,11 +69,6 @@ class OwnerController {
                         formatter 'linkShowId'
                     }
                 }
-                name {
-                    jqgrid {
-                        editable false
-                    }
-                }
                 idNum {
                     filterClosure {filter ->
                         def val=filter.params.idNum,op
@@ -117,6 +112,59 @@ class OwnerController {
                         editable false
                     }
                 }
+                name {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                mobNum {
+                    filterClosure {filter ->
+                        def val=filter.params.mobNum,op
+                        if (val.length() > 1){
+                            op=filter.params.mobNum[0]
+                            if (op == '='){
+                                val=filter.params.mobNum[1..-1]
+                                eq('mobNum',"${val}".toLong())
+                            }else if (op == '>'){
+                                if (val.length() > 2){
+                                    op=filter.params.mobNum[0..1]
+                                    if  (op == '>='){
+                                        val=filter.params.mobNum[2..-1]
+                                        ge('mobNum',"${val}".toLong())
+                                    }else{
+                                        val=filter.params.mobNum[1..-1]
+                                        gt('mobNum',"${val}".toLong())
+                                    }
+                                }else{
+                                    val=filter.params.mobNum[1..-1]
+                                    gt('mobNum',"${val}".toLong())
+                                }
+                            }else if (op == '<'){
+                                if (val.length() > 2){
+                                    op=filter.params.mobNum[0..1]
+                                    if (op == '<='){
+                                        val=filter.params.mobNum[2..-1]
+                                        le('mobNum',"${val}".toLong())
+                                    }else{
+                                        val=filter.params.mobNum[1..-1]
+                                        lt('mobNum',"${val}".toLong())
+                                    }
+                                }else{
+                                    val=filter.params.mobNum[1..-1]
+                                    lt('mobNum',"${val}".toLong())
+                                }
+                            }
+                        }
+                    }
+                    jqgrid {
+                        editable false
+                    }
+                }
+                email {
+                    jqgrid {
+                        editable false
+                    }
+                }
                 version {
                     type 'version'
                 }
@@ -132,97 +180,97 @@ class OwnerController {
 
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [ownerInstanceList: Owner.list(params), ownerInstanceTotal: Owner.count()]
+        [tenantInstanceList: Tenant.list(params), tenantInstanceTotal: Tenant.count()]
     }
 
     def create() {
 		switch (request.method) {
 		case 'GET':
-        	[ownerInstance: new Owner(params)]
+        	[tenantInstance: new Tenant(params)]
 			break
 		case 'POST':
-	        def ownerInstance = new Owner(params)
-	        if (!ownerInstance.save(flush: true)) {
-	            render view: 'create', model: [ownerInstance: ownerInstance]
+	        def tenantInstance = new Tenant(params)
+	        if (!tenantInstance.save(flush: true)) {
+	            render view: 'create', model: [tenantInstance: tenantInstance]
 	            return
 	        }
 
-			flash.message = message(code: 'default.created.message', args: [message(code: 'owner.label', default: 'Owner'), ownerInstance.id])
-	        redirect action: 'show', id: ownerInstance.id
+			flash.message = message(code: 'default.created.message', args: [message(code: 'tenant.label', default: 'Tenant'), tenantInstance.id])
+	        redirect action: 'show', id: tenantInstance.id
 			break
 		}
     }
 
     def show() {
-        def ownerInstance = Owner.get(params.id)
-        if (!ownerInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'owner.label', default: 'Owner'), params.id])
+        def tenantInstance = Tenant.get(params.id)
+        if (!tenantInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'tenant.label', default: 'Tenant'), params.id])
             redirect action: 'list'
             return
         }
 
-        [ownerInstance: ownerInstance]
+        [tenantInstance: tenantInstance]
     }
 
     def edit() {
 		switch (request.method) {
 		case 'GET':
-	        def ownerInstance = Owner.get(params.id)
-	        if (!ownerInstance) {
-	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'owner.label', default: 'Owner'), params.id])
+	        def tenantInstance = Tenant.get(params.id)
+	        if (!tenantInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'tenant.label', default: 'Tenant'), params.id])
 	            redirect action: 'list'
 	            return
 	        }
 
-	        [ownerInstance: ownerInstance]
+	        [tenantInstance: tenantInstance]
 			break
 		case 'POST':
-	        def ownerInstance = Owner.get(params.id)
-	        if (!ownerInstance) {
-	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'owner.label', default: 'Owner'), params.id])
+	        def tenantInstance = Tenant.get(params.id)
+	        if (!tenantInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'tenant.label', default: 'Tenant'), params.id])
 	            redirect action: 'list'
 	            return
 	        }
 
 	        if (params.version) {
 	            def version = params.version.toLong()
-	            if (ownerInstance.version > version) {
-	                ownerInstance.errors.rejectValue('version', 'default.optimistic.locking.failure',
-	                          [message(code: 'owner.label', default: 'Owner')] as Object[],
-	                          "Another user has updated this Owner while you were editing")
-	                render view: 'edit', model: [ownerInstance: ownerInstance]
+	            if (tenantInstance.version > version) {
+	                tenantInstance.errors.rejectValue('version', 'default.optimistic.locking.failure',
+	                          [message(code: 'tenant.label', default: 'Tenant')] as Object[],
+	                          "Another user has updated this Tenant while you were editing")
+	                render view: 'edit', model: [tenantInstance: tenantInstance]
 	                return
 	            }
 	        }
 
-	        ownerInstance.properties = params
+	        tenantInstance.properties = params
 
-	        if (!ownerInstance.save(flush: true)) {
-	            render view: 'edit', model: [ownerInstance: ownerInstance]
+	        if (!tenantInstance.save(flush: true)) {
+	            render view: 'edit', model: [tenantInstance: tenantInstance]
 	            return
 	        }
 
-			flash.message = message(code: 'default.updated.message', args: [message(code: 'owner.label', default: 'Owner'), ownerInstance.id])
-	        redirect action: 'show', id: ownerInstance.id
+			flash.message = message(code: 'default.updated.message', args: [message(code: 'tenant.label', default: 'Tenant'), tenantInstance.id])
+	        redirect action: 'show', id: tenantInstance.id
 			break
 		}
     }
 
     def delete() {
-        def ownerInstance = Owner.get(params.id)
-        if (!ownerInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'owner.label', default: 'Owner'), params.id])
+        def tenantInstance = Tenant.get(params.id)
+        if (!tenantInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'tenant.label', default: 'Tenant'), params.id])
             redirect action: 'list'
             return
         }
 
         try {
-            ownerInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [message(code: 'owner.label', default: 'Owner'), params.id])
+            tenantInstance.delete(flush: true)
+			flash.message = message(code: 'default.deleted.message', args: [message(code: 'tenant.label', default: 'Tenant'), params.id])
             redirect action: 'list'
         }
         catch (DataIntegrityViolationException e) {
-			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'owner.label', default: 'Owner'), params.id])
+			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'tenant.label', default: 'Tenant'), params.id])
             redirect action: 'show', id: params.id
         }
     }

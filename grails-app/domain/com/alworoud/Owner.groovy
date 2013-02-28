@@ -1,9 +1,8 @@
 package com.alworoud
 
 class Owner {
-
     String name
-    String idNum
+    Long idNum
     Date dateCreated
     Date lastUpdated
     static constraints = {

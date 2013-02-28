@@ -75,6 +75,44 @@ class OwnerController {
                     }
                 }
                 idNum {
+                    filterClosure {filter ->
+                        def val=filter.params.idNum,op
+                        if (val.length() > 1){
+                            op=filter.params.idNum[0]
+                            if (op == '='){
+                                val=filter.params.idNum[1..-1]
+                                eq('idNum',"${val}".toLong())
+                            }else if (op == '>'){
+                                if (val.length() > 2){
+                                    op=filter.params.idNum[0..1]
+                                    if  (op == '>='){
+                                        val=filter.params.idNum[2..-1]
+                                        ge('idNum',"${val}".toLong())
+                                    }else{
+                                        val=filter.params.idNum[1..-1]
+                                        gt('idNum',"${val}".toLong())
+                                    }
+                                }else{
+                                    val=filter.params.idNum[1..-1]
+                                    gt('idNum',"${val}".toLong())
+                                }
+                            }else if (op == '<'){
+                                if (val.length() > 2){
+                                    op=filter.params.idNum[0..1]
+                                    if (op == '<='){
+                                        val=filter.params.idNum[2..-1]
+                                        le('idNum',"${val}".toLong())
+                                    }else{
+                                        val=filter.params.idNum[1..-1]
+                                        lt('idNum',"${val}".toLong())
+                                    }
+                                }else{
+                                    val=filter.params.idNum[1..-1]
+                                    lt('idNum',"${val}".toLong())
+                                }
+                            }
+                        }
+                    }
                     jqgrid {
                         editable false
                     }

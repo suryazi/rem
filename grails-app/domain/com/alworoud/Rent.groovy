@@ -1,8 +1,9 @@
 package com.alworoud
 
 class Rent {
-    Date stDate
-    Date dueDate
+    Unit unit
+    Date stDt
+    Date dueDt
     BigDecimal rentAmt
     BigDecimal wtrCh
     BigDecimal mntnCh
@@ -10,8 +11,9 @@ class Rent {
     Date dateCreated
     Date lastUpdated
     static constraints = {
-        stDate(blank:false)
-        dueDate(blank:false)
+        unit(blank:false)
+        stDt(blank:false)
+        dueDt(blank:false)
         rentAmt(blank:false)
         wtrCh(nullable:true)
         mntnCh(nullable:true)

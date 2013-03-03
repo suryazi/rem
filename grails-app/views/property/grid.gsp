@@ -1,4 +1,4 @@
-<%@ page import="com.alworoud.Owner" %>
+<%@ page import="com.alworoud.Property" %>
 <!doctype html>
 <html>
 	<head>

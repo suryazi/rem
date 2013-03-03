@@ -1,5 +1,5 @@
 Testsuite: com.alworoud.OwnerTests
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.81 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 2.369 sec
 ------------- Standard Output ---------------
 --Output from testOwner--
 ------------- ---------------- ---------------
@@ -7,4 +7,4 @@ Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.81 sec
 --Output from testOwner--
 ------------- ---------------- ---------------
 
-Testcase: testOwner took 0.808 sec
+Testcase: testOwner took 2.367 sec

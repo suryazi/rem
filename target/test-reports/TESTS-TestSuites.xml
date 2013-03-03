@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="falblawi" id="0" name="OwnerTests" package="com.alworoud" tests="1" time="0.81" timestamp="2013-02-26T09:04:06">
+  <testsuite errors="0" failures="0" hostname="falblawi" id="0" name="OwnerTests" package="com.alworoud" tests="1" time="2.369" timestamp="2013-02-28T10:57:17">
       <properties />
 
-      <testcase classname="com.alworoud.OwnerTests" name="testOwner" time="0.808" />
+      <testcase classname="com.alworoud.OwnerTests" name="testOwner" time="2.367" />
 
       <system-out><![CDATA[--Output from testOwner--
 ]]></system-out>

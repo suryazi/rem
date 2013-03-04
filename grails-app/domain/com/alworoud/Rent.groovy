@@ -10,8 +10,8 @@ class Rent {
     BigDecimal wtrCh
     BigDecimal mntnCh
     BigDecimal totCh
-    Date dateCreated
-    Date lastUpdated
+    LocalDate dateCreated
+    LocalDate lastUpdated
     static constraints = {
         unit(blank:false)
         stDt(blank:false)

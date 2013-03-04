@@ -1,12 +1,14 @@
 package com.alworoud
 
+import org.joda.time.LocalDate
+
 class Tenant {
     Long idNum
     String name
     Long mobNum
     String email
-    Date dateCreated
-    Date lastUpdated
+    LocalDate dateCreated
+    LocalDate lastUpdated
     static constraints = {
         idNum(unique:true, blank:false)
         name(blank:false)

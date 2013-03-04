@@ -1,10 +1,12 @@
 package com.alworoud
 
+import org.joda.time.LocalDate
+
 class Owner {
     String name
     Long idNum
-    Date dateCreated
-    Date lastUpdated
+    LocalDate dateCreated
+    LocalDate lastUpdated
     static constraints = {
         name(blank:false)
         idNum(unique:true, blank:false)

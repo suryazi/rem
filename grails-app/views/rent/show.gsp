@@ -34,14 +34,14 @@
 					<g:if test="${rentInstance?.stDt}">
 						<dt><g:message code="rent.stDt.label" default="St Dt" /></dt>
 						
-							<dd><g:formatDate date="${rentInstance?.stDt}" /></dd>
+							<dd><g:fieldValue bean="${rentInstance}" field="stDt"/></dd>
 						
 					</g:if>
 				
 					<g:if test="${rentInstance?.dueDt}">
 						<dt><g:message code="rent.dueDt.label" default="Due Dt" /></dt>
 						
-							<dd><g:formatDate date="${rentInstance?.dueDt}" /></dd>
+							<dd><g:fieldValue bean="${rentInstance}" field="dueDt"/></dd>
 						
 					</g:if>
 				

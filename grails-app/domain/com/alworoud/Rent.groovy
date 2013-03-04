@@ -1,9 +1,11 @@
 package com.alworoud
 
+import org.joda.time.LocalDate
+
 class Rent {
     Unit unit
-    Date stDt
-    Date dueDt
+    LocalDate stDt
+    LocalDate dueDt
     BigDecimal rentAmt
     BigDecimal wtrCh
     BigDecimal mntnCh

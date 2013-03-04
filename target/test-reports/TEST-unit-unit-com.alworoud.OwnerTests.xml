@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="falblawi" name="com.alworoud.OwnerTests" tests="1" time="2.369" timestamp="2013-02-28T10:57:17">
-  <properties />
-  <testcase classname="com.alworoud.OwnerTests" name="testOwner" time="2.367" />
-  <system-out><![CDATA[--Output from testOwner--
-]]></system-out>
-  <system-err><![CDATA[--Output from testOwner--
-]]></system-err>
-</testsuite>

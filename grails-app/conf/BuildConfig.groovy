@@ -42,6 +42,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.20'
+        compile "org.jadira.usertype:usertype.jodatime:1.9"
     }
 
     plugins {
@@ -56,6 +57,9 @@ grails.project.dependency.resolution = {
         compile ":easygrid:1.2.1"
         compile ":twitter-bootstrap:2.2.2"
         runtime ":fields:1.3"
+        
+        //Joda Time Plugin
+        compile ":joda-time:1.4"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         runtime ":zipped-resources:1.0"

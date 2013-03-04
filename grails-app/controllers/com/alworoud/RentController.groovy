@@ -110,8 +110,8 @@ class RentController {
                     }
                     jqgrid{
                         editable false
-                        //this will create a link to the show page
-                        formatter 'linkShowId'
+                        //this will create a link to the Unit show page
+                        formatter 'linkUnitId'
                     }
                 }
                 stDt {

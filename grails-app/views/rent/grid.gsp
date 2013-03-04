@@ -9,6 +9,9 @@
                     function linkShowId(cellvalue, options, rowObject) {
                         return "<a href='/rem/rent/show/" + cellvalue + "'>" + cellvalue + "</a> ";
                     }
+                    function linkUnitId(cellvalue, options, rowObject) {
+                        return "<a href='/rem/unit/show/" + cellvalue.id + "'>" + cellvalue.id + "</a> ";
+                    }
                 </r:script>
                 <r:require modules="easygrid-jqgrid-dev,export"/>
         </head>

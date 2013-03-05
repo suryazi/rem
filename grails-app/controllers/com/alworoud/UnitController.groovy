@@ -94,6 +94,102 @@ class UnitController {
                 }
             }
         }
+        
+        unitJQGridSelection {
+            dataSourceType 'gorm'
+            domainClass Unit
+            gridImpl 'jqgrid'
+            inlineEdit true
+            jqgrid {
+                width '"900"'
+            }
+            export {
+                export_title 'Unit'
+                pdf {
+                    'border.color' java.awt.Color.BLUE
+                }
+            }
+            columns {
+                id {
+                    filterClosure {filter ->
+                        def val=filter.params.id,op
+                        if (val.length() > 1){
+                            op=filter.params.id[0]
+                            if (op == '='){
+                                val=filter.params.id[1..-1]
+                                eq('id',"${val}".toLong())
+                            }else if (op == '>'){
+                                if (val.length() > 2){
+                                    op=filter.params.id[0..1]
+                                    if  (op == '>='){
+                                        val=filter.params.id[2..-1]
+                                        ge('id',"${val}".toLong())
+                                    }else{
+                                        val=filter.params.id[1..-1]
+                                        gt('id',"${val}".toLong())
+                                    }
+                                }else{
+                                    val=filter.params.id[1..-1]
+                                    gt('id',"${val}".toLong())
+                                }
+                            }else if (op == '<'){
+                                if (val.length() > 2){
+                                    op=filter.params.id[0..1]
+                                    if (op == '<='){
+                                        val=filter.params.id[2..-1]
+                                        le('id',"${val}".toLong())
+                                    }else{
+                                        val=filter.params.id[1..-1]
+                                        lt('id',"${val}".toLong())
+                                    }
+                                }else{
+                                    val=filter.params.id[1..-1]
+                                    lt('id',"${val}".toLong())
+                                }
+                            }
+                        }
+                    }
+                    jqgrid{
+                        editable false
+                        //this will create a link to the show page
+                        formatter 'linkShowId'
+                    }
+                }
+                unitId {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                unitType {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                status {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                remarks {
+                    jqgrid {
+                        editable false
+                    }
+                }
+            }
+            autocomplete {
+                idProp 'id'
+//                labelProp 'name'
+                labelValue { val, params ->
+                    "${val.unitId} (${val.unitType})"
+                }
+                textBoxFilterClosure { filter ->
+                    ilike('unitId', "%${filter.paramValue}%")
+                }
+                constraintsFilterClosure { filter ->
+                    
+                }
+            }
+        }
     }
     
     def grid(){}

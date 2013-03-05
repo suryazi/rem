@@ -53,9 +53,9 @@
 						
 							<td>${fieldValue(bean: tenantInstance, field: "email")}</td>
 						
-							<td><g:formatDate date="${tenantInstance.dateCreated}" /></td>
+							<td>${fieldValue(bean: tenantInstance, field: "dateCreated")}</td>
 						
-							<td><g:formatDate date="${tenantInstance.lastUpdated}" /></td>
+							<td>${fieldValue(bean: tenantInstance, field: "lastUpdated")}</td>
 						
 							<td class="link">
 								<g:link action="show" id="${tenantInstance.id}" class="btn btn-small">Show &raquo;</g:link>

@@ -45,9 +45,9 @@
 						
 							<td>${fieldValue(bean: ownerInstance, field: "idNum")}</td>
 						
-							<td><g:formatDate date="${ownerInstance.dateCreated}" /></td>
+							<td>${fieldValue(bean: ownerInstance, field: "dateCreated")}</td>
 						
-							<td><g:formatDate date="${ownerInstance.lastUpdated}" /></td>
+							<td>${fieldValue(bean: ownerInstance, field: "lastUpdated")}</td>
 						
 							<td class="link">
 								<g:link action="show" id="${ownerInstance.id}" class="btn btn-small">Show &raquo;</g:link>

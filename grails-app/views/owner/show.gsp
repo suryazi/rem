@@ -41,14 +41,23 @@
 					<g:if test="${ownerInstance?.dateCreated}">
 						<dt><g:message code="owner.dateCreated.label" default="Date Created" /></dt>
 						
-							<dd><g:formatDate date="${ownerInstance?.dateCreated}" /></dd>
+							<dd><g:fieldValue bean="${ownerInstance}" field="dateCreated"/></dd>
 						
 					</g:if>
 				
 					<g:if test="${ownerInstance?.lastUpdated}">
 						<dt><g:message code="owner.lastUpdated.label" default="Last Updated" /></dt>
 						
-							<dd><g:formatDate date="${ownerInstance?.lastUpdated}" /></dd>
+							<dd><g:fieldValue bean="${ownerInstance}" field="lastUpdated"/></dd>
+						
+					</g:if>
+				
+					<g:if test="${ownerInstance?.prop}">
+						<dt><g:message code="owner.prop.label" default="Prop" /></dt>
+						
+							<g:each in="${ownerInstance.prop}" var="p">
+							<dd><g:link controller="property" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></dd>
+							</g:each>
 						
 					</g:if>
 				

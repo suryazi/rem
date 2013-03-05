@@ -55,7 +55,7 @@
 						
 							<td>${fieldValue(bean: unitInstance, field: "remarks")}</td>
 						
-							<td><g:formatDate date="${unitInstance.dateCreated}" /></td>
+							<td>${fieldValue(bean: unitInstance, field: "dateCreated")}</td>
 						
 							<td class="link">
 								<g:link action="show" id="${unitInstance.id}" class="btn btn-small">Show &raquo;</g:link>

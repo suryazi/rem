@@ -62,14 +62,14 @@
 					<g:if test="${unitInstance?.dateCreated}">
 						<dt><g:message code="unit.dateCreated.label" default="Date Created" /></dt>
 						
-							<dd><g:formatDate date="${unitInstance?.dateCreated}" /></dd>
+							<dd><g:fieldValue bean="${unitInstance}" field="dateCreated"/></dd>
 						
 					</g:if>
 				
 					<g:if test="${unitInstance?.lastUpdated}">
 						<dt><g:message code="unit.lastUpdated.label" default="Last Updated" /></dt>
 						
-							<dd><g:formatDate date="${unitInstance?.lastUpdated}" /></dd>
+							<dd><g:fieldValue bean="${unitInstance}" field="lastUpdated"/></dd>
 						
 					</g:if>
 				

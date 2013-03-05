@@ -76,14 +76,14 @@
 					<g:if test="${rentInstance?.dateCreated}">
 						<dt><g:message code="rent.dateCreated.label" default="Date Created" /></dt>
 						
-							<dd><g:formatDate date="${rentInstance?.dateCreated}" /></dd>
+							<dd><g:fieldValue bean="${rentInstance}" field="dateCreated"/></dd>
 						
 					</g:if>
 				
 					<g:if test="${rentInstance?.lastUpdated}">
 						<dt><g:message code="rent.lastUpdated.label" default="Last Updated" /></dt>
 						
-							<dd><g:formatDate date="${rentInstance?.lastUpdated}" /></dd>
+							<dd><g:fieldValue bean="${rentInstance}" field="lastUpdated"/></dd>
 						
 					</g:if>
 				

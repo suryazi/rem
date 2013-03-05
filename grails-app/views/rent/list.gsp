@@ -47,9 +47,9 @@
 						
 							<td>${fieldValue(bean: rentInstance, field: "unit")}</td>
 						
-							<td><g:formatDate date="${rentInstance.stDt}" /></td>
+							<td>${fieldValue(bean: rentInstance, field: "stDt")}</td>
 						
-							<td><g:formatDate date="${rentInstance.dueDt}" /></td>
+							<td>${fieldValue(bean: rentInstance, field: "dueDt")}</td>
 						
 							<td>${fieldValue(bean: rentInstance, field: "rentAmt")}</td>
 						

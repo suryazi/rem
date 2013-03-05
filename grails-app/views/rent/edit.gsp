@@ -35,7 +35,22 @@
 					<g:form class="form-horizontal" action="edit" id="${rentInstance?.id}" >
 						<g:hiddenField name="version" value="${rentInstance?.version}" />
 						<fieldset>
-							<f:all bean="rentInstance"/>
+							<div class="control-group">
+                                                                <label class="control-label" for="unit">Unit</label>
+                                                                <div class="controls">
+                                                                  <grid:selection title="Select the unit"
+                                                                          gridName="unitJQGridSelection" controller="unit"
+                                                                          value="${rentInstance?.unit?.id}" id="unit" name="unit.id"
+                                                                  />
+                                                                </div>
+                                                        </div>
+							<f:with bean="rentInstance">
+                                                          <f:field property="stDt"/>
+                                                          <f:field property="dueDt"/>
+                                                          <f:field property="rentAmt"/>
+                                                          <f:field property="wtrCh"/>
+                                                          <f:field property="mntnCh"/>
+                                                        </f:with>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

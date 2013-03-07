@@ -3,19 +3,23 @@ package com.alworoud
 import org.joda.time.LocalDate
 
 class Tenant {
-    Long idNum
+    String idNum
     String name
-    Long mobNum
+    String company
+    String mobNum
     String email
     LocalDate dateCreated
     LocalDate lastUpdated
     static constraints = {
         idNum(unique:true, blank:false)
         name(blank:false)
+        company(nullable:true)
         mobNum(blank:false)
         email(email:true, nullable:false)
     }
+    static hasMany = [units:Unit]
+    static belongsTo = [units:Unit]
     String toString(){
-        "${name} (${idNum})"
+        "${idNum} (${name})"
     }
 }

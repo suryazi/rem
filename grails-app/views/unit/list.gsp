@@ -36,7 +36,7 @@
 						
 							<g:sortableColumn property="remarks" title="${message(code: 'unit.remarks.label', default: 'Remarks')}" />
 						
-							<g:sortableColumn property="dateCreated" title="${message(code: 'unit.dateCreated.label', default: 'Date Created')}" />
+							<th class="header"><g:message code="unit.tenant.label" default="Tenant" /></th>
 						
 							<th></th>
 						</tr>
@@ -55,7 +55,7 @@
 						
 							<td>${fieldValue(bean: unitInstance, field: "remarks")}</td>
 						
-							<td>${fieldValue(bean: unitInstance, field: "dateCreated")}</td>
+							<td>${fieldValue(bean: unitInstance, field: "tenant")}</td>
 						
 							<td class="link">
 								<g:link action="show" id="${unitInstance.id}" class="btn btn-small">Show &raquo;</g:link>

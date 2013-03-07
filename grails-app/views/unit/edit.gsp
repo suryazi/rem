@@ -52,6 +52,15 @@
                                                                   />
                                                                 </div>
                                                         </div>
+                                                        <div class="control-group">
+                                                                <label class="control-label" for="tenant">Tenant</label>
+                                                                <div class="controls">
+                                                                  <grid:selection title="Select the Tenant"
+                                                                          gridName="tenantJQGridSelection" controller="tenant"
+                                                                          value="${unitInstance?.tenant?.id}" id="tenant" name="tenant.id"
+                                                                  />
+                                                                </div>
+                                                        </div>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

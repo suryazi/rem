@@ -30,13 +30,13 @@
 						
 							<g:sortableColumn property="name" title="${message(code: 'tenant.name.label', default: 'Name')}" />
 						
+							<g:sortableColumn property="company" title="${message(code: 'tenant.company.label', default: 'Company')}" />
+						
 							<g:sortableColumn property="mobNum" title="${message(code: 'tenant.mobNum.label', default: 'Mob Num')}" />
 						
 							<g:sortableColumn property="email" title="${message(code: 'tenant.email.label', default: 'Email')}" />
 						
 							<g:sortableColumn property="dateCreated" title="${message(code: 'tenant.dateCreated.label', default: 'Date Created')}" />
-						
-							<g:sortableColumn property="lastUpdated" title="${message(code: 'tenant.lastUpdated.label', default: 'Last Updated')}" />
 						
 							<th></th>
 						</tr>
@@ -49,13 +49,13 @@
 						
 							<td>${fieldValue(bean: tenantInstance, field: "name")}</td>
 						
+							<td>${fieldValue(bean: tenantInstance, field: "company")}</td>
+						
 							<td>${fieldValue(bean: tenantInstance, field: "mobNum")}</td>
 						
 							<td>${fieldValue(bean: tenantInstance, field: "email")}</td>
 						
 							<td>${fieldValue(bean: tenantInstance, field: "dateCreated")}</td>
-						
-							<td>${fieldValue(bean: tenantInstance, field: "lastUpdated")}</td>
 						
 							<td class="link">
 								<g:link action="show" id="${tenantInstance.id}" class="btn btn-small">Show &raquo;</g:link>

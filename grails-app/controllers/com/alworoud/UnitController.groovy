@@ -7,8 +7,8 @@ import org.springframework.dao.DataIntegrityViolationException
 class UnitController {
 
     static allowedMethods = [create: ['GET', 'POST'], edit: ['GET', 'POST'], delete: 'POST']
-    
-    static grids ={
+
+static grids ={
         unitJQGrid {
             dataSourceType 'gorm'
             domainClass Unit
@@ -94,20 +94,13 @@ class UnitController {
                 }
             }
         }
-        
         unitJQGridSelection {
             dataSourceType 'gorm'
             domainClass Unit
             gridImpl 'jqgrid'
-            inlineEdit true
+            inlineEdit false
             jqgrid {
                 width '"900"'
-            }
-            export {
-                export_title 'Unit'
-                pdf {
-                    'border.color' java.awt.Color.BLUE
-                }
             }
             columns {
                 id {
@@ -151,8 +144,6 @@ class UnitController {
                     }
                     jqgrid{
                         editable false
-                        //this will create a link to the show page
-                        formatter 'linkShowId'
                     }
                 }
                 unitId {
@@ -180,7 +171,7 @@ class UnitController {
                 idProp 'id'
 //                labelProp 'name'
                 labelValue { val, params ->
-                    "${val.unitId} (${val.unitType})"
+                    "${val.unitId} (${val.unitType} - ${val.status})"
                 }
                 textBoxFilterClosure { filter ->
                     ilike('unitId', "%${filter.paramValue}%")

@@ -7,7 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class TenantController {
 
     static allowedMethods = [create: ['GET', 'POST'], edit: ['GET', 'POST'], delete: 'POST']
-    
+
     static grids ={
         tenantJQGrid {
             dataSourceType 'gorm'
@@ -70,44 +70,6 @@ class TenantController {
                     }
                 }
                 idNum {
-                    filterClosure {filter ->
-                        def val=filter.params.idNum,op
-                        if (val.length() > 1){
-                            op=filter.params.idNum[0]
-                            if (op == '='){
-                                val=filter.params.idNum[1..-1]
-                                eq('idNum',"${val}".toLong())
-                            }else if (op == '>'){
-                                if (val.length() > 2){
-                                    op=filter.params.idNum[0..1]
-                                    if  (op == '>='){
-                                        val=filter.params.idNum[2..-1]
-                                        ge('idNum',"${val}".toLong())
-                                    }else{
-                                        val=filter.params.idNum[1..-1]
-                                        gt('idNum',"${val}".toLong())
-                                    }
-                                }else{
-                                    val=filter.params.idNum[1..-1]
-                                    gt('idNum',"${val}".toLong())
-                                }
-                            }else if (op == '<'){
-                                if (val.length() > 2){
-                                    op=filter.params.idNum[0..1]
-                                    if (op == '<='){
-                                        val=filter.params.idNum[2..-1]
-                                        le('idNum',"${val}".toLong())
-                                    }else{
-                                        val=filter.params.idNum[1..-1]
-                                        lt('idNum',"${val}".toLong())
-                                    }
-                                }else{
-                                    val=filter.params.idNum[1..-1]
-                                    lt('idNum',"${val}".toLong())
-                                }
-                            }
-                        }
-                    }
                     jqgrid {
                         editable false
                     }
@@ -117,45 +79,12 @@ class TenantController {
                         editable false
                     }
                 }
-                mobNum {
-                    filterClosure {filter ->
-                        def val=filter.params.mobNum,op
-                        if (val.length() > 1){
-                            op=filter.params.mobNum[0]
-                            if (op == '='){
-                                val=filter.params.mobNum[1..-1]
-                                eq('mobNum',"${val}".toLong())
-                            }else if (op == '>'){
-                                if (val.length() > 2){
-                                    op=filter.params.mobNum[0..1]
-                                    if  (op == '>='){
-                                        val=filter.params.mobNum[2..-1]
-                                        ge('mobNum',"${val}".toLong())
-                                    }else{
-                                        val=filter.params.mobNum[1..-1]
-                                        gt('mobNum',"${val}".toLong())
-                                    }
-                                }else{
-                                    val=filter.params.mobNum[1..-1]
-                                    gt('mobNum',"${val}".toLong())
-                                }
-                            }else if (op == '<'){
-                                if (val.length() > 2){
-                                    op=filter.params.mobNum[0..1]
-                                    if (op == '<='){
-                                        val=filter.params.mobNum[2..-1]
-                                        le('mobNum',"${val}".toLong())
-                                    }else{
-                                        val=filter.params.mobNum[1..-1]
-                                        lt('mobNum',"${val}".toLong())
-                                    }
-                                }else{
-                                    val=filter.params.mobNum[1..-1]
-                                    lt('mobNum',"${val}".toLong())
-                                }
-                            }
-                        }
+                company {
+                    jqgrid {
+                        editable false
                     }
+                }
+                mobNum {
                     jqgrid {
                         editable false
                     }
@@ -167,6 +96,98 @@ class TenantController {
                 }
                 version {
                     type 'version'
+                }
+            }
+        }
+        tenantJQGridSelection {
+            dataSourceType 'gorm'
+            domainClass Tenant
+            gridImpl 'jqgrid'
+            inlineEdit false
+            jqgrid {
+                width '"900"'
+            }
+            columns {
+                id {
+                    filterClosure {filter ->
+                        def val=filter.params.id,op
+                        if (val.length() > 1){
+                            op=filter.params.id[0]
+                            if (op == '='){
+                                val=filter.params.id[1..-1]
+                                eq('id',"${val}".toLong())
+                            }else if (op == '>'){
+                                if (val.length() > 2){
+                                    op=filter.params.id[0..1]
+                                    if  (op == '>='){
+                                        val=filter.params.id[2..-1]
+                                        ge('id',"${val}".toLong())
+                                    }else{
+                                        val=filter.params.id[1..-1]
+                                        gt('id',"${val}".toLong())
+                                    }
+                                }else{
+                                    val=filter.params.id[1..-1]
+                                    gt('id',"${val}".toLong())
+                                }
+                            }else if (op == '<'){
+                                if (val.length() > 2){
+                                    op=filter.params.id[0..1]
+                                    if (op == '<='){
+                                        val=filter.params.id[2..-1]
+                                        le('id',"${val}".toLong())
+                                    }else{
+                                        val=filter.params.id[1..-1]
+                                        lt('id',"${val}".toLong())
+                                    }
+                                }else{
+                                    val=filter.params.id[1..-1]
+                                    lt('id',"${val}".toLong())
+                                }
+                            }
+                        }
+                    }
+                    jqgrid{
+                        editable false
+                    }
+                }
+                idNum {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                name {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                company {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                mobNum {
+                    jqgrid {
+                        editable false
+                    }
+                }
+                email {
+                    jqgrid {
+                        editable false
+                    }
+                }
+            }
+            autocomplete {
+                idProp 'id'
+//                labelProp 'name'
+                labelValue { val, params ->
+                    "${val.idNum} (${val.name} - ${val.mobNum})"
+                }
+                textBoxFilterClosure { filter ->
+                    ilike('idNum', "%${filter.paramValue}%")
+                }
+                constraintsFilterClosure { filter ->
+                    
                 }
             }
         }

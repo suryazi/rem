@@ -4,7 +4,7 @@ import org.joda.time.LocalDate
 
 class Owner {
     String name
-    Long idNum
+    String idNum
     LocalDate dateCreated
     LocalDate lastUpdated
     static constraints = {

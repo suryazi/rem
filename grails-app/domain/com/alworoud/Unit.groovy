@@ -8,6 +8,7 @@ class Unit {
     String desc
     String status
     String remarks
+    Tenant tenant
     LocalDate dateCreated
     LocalDate lastUpdated
     static constraints = {
@@ -16,10 +17,11 @@ class Unit {
         desc(nullable: true)
         status(blank:false,inList:(['Vacant','Rent','Lease','Maintenance','Sale','Sold']))
         remarks(nullable:true)
+        tenant(nullable:true)
     }
     static belongsTo = [prop:Property]
     
     String toString(){
-        "${unitId} (${unitType})"
+        "${unitId} (${unitType} - ${status})"
     }
 }

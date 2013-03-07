@@ -59,6 +59,13 @@
 						
 					</g:if>
 				
+					<g:if test="${unitInstance?.tenant}">
+						<dt><g:message code="unit.tenant.label" default="Tenant" /></dt>
+						
+							<dd><g:link controller="tenant" action="show" id="${unitInstance?.tenant?.id}">${unitInstance?.tenant?.encodeAsHTML()}</g:link></dd>
+						
+					</g:if>
+				
 					<g:if test="${unitInstance?.dateCreated}">
 						<dt><g:message code="unit.dateCreated.label" default="Date Created" /></dt>
 						

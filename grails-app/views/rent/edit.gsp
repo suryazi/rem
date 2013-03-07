@@ -5,6 +5,7 @@
 		<meta name="layout" content="bootstrap">
 		<g:set var="entityName" value="${message(code: 'rent.label', default: 'Rent')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+                <r:require modules="easygrid-selection-dev"/>
 	</head>
 	<body>
 		<div class="row-fluid">

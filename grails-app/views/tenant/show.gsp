@@ -38,6 +38,13 @@
 						
 					</g:if>
 				
+					<g:if test="${tenantInstance?.company}">
+						<dt><g:message code="tenant.company.label" default="Company" /></dt>
+						
+							<dd><g:fieldValue bean="${tenantInstance}" field="company"/></dd>
+						
+					</g:if>
+				
 					<g:if test="${tenantInstance?.mobNum}">
 						<dt><g:message code="tenant.mobNum.label" default="Mob Num" /></dt>
 						
@@ -63,6 +70,15 @@
 						<dt><g:message code="tenant.lastUpdated.label" default="Last Updated" /></dt>
 						
 							<dd><g:fieldValue bean="${tenantInstance}" field="lastUpdated"/></dd>
+						
+					</g:if>
+				
+					<g:if test="${tenantInstance?.units}">
+						<dt><g:message code="tenant.units.label" default="Units" /></dt>
+						
+							<g:each in="${tenantInstance.units}" var="u">
+							<dd><g:link controller="unit" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></dd>
+							</g:each>
 						
 					</g:if>
 				

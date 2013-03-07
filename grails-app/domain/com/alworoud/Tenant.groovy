@@ -9,7 +9,7 @@ class Tenant {
     String mobNum
     String email
     LocalDate dateCreated
-    LocalDate lastUpdated
+    Date lastUpdated
     static constraints = {
         idNum(unique:true, blank:false)
         name(blank:false)

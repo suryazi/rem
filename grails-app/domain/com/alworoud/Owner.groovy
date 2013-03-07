@@ -6,7 +6,7 @@ class Owner {
     String name
     String idNum
     LocalDate dateCreated
-    LocalDate lastUpdated
+    Date lastUpdated
     static constraints = {
         name(blank:false)
         idNum(unique:true, blank:false)

@@ -10,7 +10,7 @@ class Unit {
     String remarks
     Tenant tenant
     LocalDate dateCreated
-    LocalDate lastUpdated
+    Date lastUpdated
     static constraints = {
         unitId(unique: 'prop', blank:false)
         unitType(blank:false,inList:(['Villa','Apartment','Shop','Space','Land','Building']))

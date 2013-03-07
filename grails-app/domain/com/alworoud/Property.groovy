@@ -11,7 +11,7 @@ class Property {
     String status
     String remarks
     LocalDate dateCreated
-    LocalDate lastUpdated
+    Date lastUpdated
     static constraints = {
         propId(unique:true, blank:false)
         propType(blank:false, inList:(['Building','Compound','Land']))

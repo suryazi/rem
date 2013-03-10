@@ -1,6 +1,7 @@
 package com.alworoud
 
 import org.joda.time.LocalDate
+import org.joda.time.DateTime
 
 class Rent {
     Unit unit
@@ -10,8 +11,8 @@ class Rent {
     BigDecimal wtrCh
     BigDecimal mntnCh
     BigDecimal totCh
-    LocalDate dateCreated
-    Date lastUpdated
+    DateTime dateCreated
+    DateTime lastUpdated
     static constraints = {
         unit(blank:false)
         stDt(blank:false)

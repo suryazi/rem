@@ -1,6 +1,6 @@
 package com.alworoud
 
-import org.joda.time.LocalDate
+import org.joda.time.DateTime
 
 class Property {
     String propId
@@ -10,8 +10,8 @@ class Property {
     String city
     String status
     String remarks
-    LocalDate dateCreated
-    Date lastUpdated
+    DateTime dateCreated
+    DateTime lastUpdated
     static constraints = {
         propId(unique:true, blank:false)
         propType(blank:false, inList:(['Building','Compound','Land']))

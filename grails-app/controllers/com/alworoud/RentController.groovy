@@ -3,6 +3,7 @@ package com.alworoud
 import org.grails.plugin.easygrid.Easygrid
 import org.springframework.dao.DataIntegrityViolationException
 import com.alworoud.DateParser as d
+import org.joda.time.*
 
 @Easygrid
 class RentController {
@@ -123,7 +124,12 @@ class RentController {
                             if (op == '='){
                                 val=filter.params.stDt[1..-1]
                                 eq('stDt',"${val}".toDate())
-                            }else if (op == '>'){
+                                //DateTime startDate = new DateTime()
+                                //Days dys = Days.daysBetween(startDate, d.frmt(val))
+                                //println('Hello'+ dys.getDays())
+                                //println (d.te(val))
+                            }
+                            else if (op == '>'){
                                 if (val.length() > 2){
                                     op=filter.params.stDt[0..1]
                                     if  (op == '>='){

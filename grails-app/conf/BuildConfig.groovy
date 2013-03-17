@@ -62,7 +62,7 @@ grails.project.dependency.resolution = {
         compile ":joda-time:1.4"
         
         //Security Plugin
-        compile ":shiro:1.1.4"
+        compile ":shiro:1.2.0-SNAPSHOT"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         runtime ":zipped-resources:1.0"

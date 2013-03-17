@@ -63,6 +63,7 @@ grails.project.dependency.resolution = {
         
         //Security Plugin
         compile ":shiro:1.2.0-SNAPSHOT"
+        compile ":bcrypt:1.0"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         runtime ":zipped-resources:1.0"

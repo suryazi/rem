@@ -9,6 +9,8 @@ import org.apache.shiro.crypto.RandomNumberGenerator
 import org.apache.shiro.crypto.SecureRandomNumberGenerator
 
 class SignupController {
+    
+    def bcryptService
 
     def index() {
         User user = new User()
@@ -37,8 +39,7 @@ class SignupController {
             else {
                 // Create user
                 def passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()
-                def password=params.password
-                user = new User(username:params.username,passwordHash: new Sha512Hash(password,passwordSalt,1024).toBase64(),passwordSalt:passwordSalt)
+                user = new User(username:params.username,passwordHash: new Sha512Hash(params.password+params.username,passwordSalt,1024).toBase64(),passwordSalt:passwordSalt,passwordBcrypt:bcryptService.hashPassword(params.username+params.password))
 
                 if (user.save()) {
 
@@ -48,7 +49,7 @@ class SignupController {
                     user.save()
 
                     // Login user
-                    def authToken = new UsernamePasswordToken(user.username, params.password)
+                    def authToken = new UsernamePasswordToken(user.username,params.password+params.username)
                     SecurityUtils.subject.login(authToken)
                     
                     redirect(controller: 'owner', action: 'index')

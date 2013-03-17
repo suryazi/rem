@@ -5,6 +5,8 @@ import org.apache.shiro.SecurityUtils
 import com.alworoud.Role
 import com.alworoud.User
 import org.apache.shiro.crypto.hash.Sha512Hash
+import org.apache.shiro.crypto.RandomNumberGenerator
+import org.apache.shiro.crypto.SecureRandomNumberGenerator
 
 class SignupController {
 
@@ -34,10 +36,9 @@ class SignupController {
             // Passwords match. Let's attempt to save the user
             else {
                 // Create user
-                user = new User(
-                        username: params.username,
-                        passwordHash: new Sha512Hash(params.password).toHex()
-                )
+                def passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()
+                def password=params.password
+                user = new User(username:params.username,passwordHash: new Sha512Hash(password,passwordSalt,1024).toBase64(),passwordSalt:passwordSalt)
 
                 if (user.save()) {
 

@@ -1,6 +1,8 @@
 import com.alworoud.Role
 import com.alworoud.User
 import org.apache.shiro.crypto.hash.Sha512Hash
+import org.apache.shiro.crypto.RandomNumberGenerator
+import org.apache.shiro.crypto.SecureRandomNumberGenerator
 
 class BootStrap {
    
@@ -15,12 +17,15 @@ class BootStrap {
         def userRole = new Role(name:"User")
         userRole.addToPermissions("Owner:*")
         userRole.save()
+        
+        def passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()
        
-        def admin = new User(username: "Admin", passwordHash: new Sha512Hash("password").toHex())
+        def admin = new User(username:"Admin",passwordHash: new Sha512Hash("password",passwordSalt,1024).toBase64(),passwordSalt:passwordSalt)
         admin.addToRoles(adminRole)
         admin.save()
        
-        def user = new User(username: "User", passwordHash: new Sha512Hash("password").toHex())
+        passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()
+        def user = new User(username:"User",passwordHash: new Sha512Hash("password",passwordSalt,1024).toBase64(),passwordSalt:passwordSalt)
         user.addToRoles(userRole)
         user.save()
               

@@ -3,6 +3,8 @@ import org.apache.shiro.authc.credential.Sha512CredentialsMatcher
 
 beans = {
     credentialMatcher(Sha512CredentialsMatcher) {
-        storedCredentialsHexEncoded = true
+        storedCredentialsHexEncoded = false
+        hashSalted = true
+        hashIterations=1024
     }
 }

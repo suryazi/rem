@@ -38,7 +38,7 @@
 						<span class="icon-bar"></span>
 					</a>
 					
-					<a class="brand" href="${createLink(uri: '/')}">Grails Twitter Bootstrap</a>
+					<a class="brand" href="${createLink(uri: '/')}">Real Estate Management</a>
 
 					<div class="nav-collapse">
 						<ul class="nav">							

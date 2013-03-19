@@ -5,6 +5,6 @@ beans = {
     credentialMatcher(Sha512CredentialsMatcher) {
         storedCredentialsHexEncoded = false
         hashSalted = true
-        hashIterations=1024
+        hashIterations=16384
     }
 }

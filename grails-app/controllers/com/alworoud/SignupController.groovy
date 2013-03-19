@@ -39,7 +39,7 @@ class SignupController {
             else {
                 // Create user
                 def passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()
-                user = new User(username:params.username,passwordHash: new Sha512Hash(params.password+params.username,passwordSalt,1024).toBase64(),passwordSalt:passwordSalt,passwordBcrypt:bcryptService.hashPassword(params.username+params.password))
+                user = new User(username:params.username,passwordHash: new Sha512Hash(params.password+params.username,passwordSalt,16384).toBase64(),passwordSalt:passwordSalt,passwordBcrypt:bcryptService.hashPassword(params.username+params.password))
 
                 if (user.save()) {
 

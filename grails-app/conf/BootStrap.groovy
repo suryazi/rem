@@ -21,12 +21,12 @@ class BootStrap {
         
         def passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()
        
-        def admin = new User(username:"Admin",passwordHash: new Sha512Hash("password",passwordSalt,1024).toBase64(),passwordSalt:passwordSalt,passwordBcrypt:bcryptService.hashPassword("password"))
+        def admin = new User(username:"Admin",passwordHash: new Sha512Hash("passwordAdmin",passwordSalt,1024).toBase64(),passwordSalt:passwordSalt,passwordBcrypt:bcryptService.hashPassword("Adminpassword"))
         admin.addToRoles(adminRole)
         admin.save()
        
         passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()
-        def user = new User(username:"User",passwordHash: new Sha512Hash("password",passwordSalt,1024).toBase64(),passwordSalt:passwordSalt,passwordBcrypt:bcryptService.hashPassword("password"))
+        def user = new User(username:"User",passwordHash: new Sha512Hash("passwordUser",passwordSalt,1024).toBase64(),passwordSalt:passwordSalt,passwordBcrypt:bcryptService.hashPassword("Userpassword"))
         user.addToRoles(userRole)
         user.save()
               

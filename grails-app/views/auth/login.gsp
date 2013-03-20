@@ -1,35 +1,26 @@
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="layout" content="main" />
+  <meta name="layout" content="bootstraplogin">
+  <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
   <title>Login</title>
 </head>
 <body>
-  <g:if test="${flash.message}">
-    <div class="message">${flash.message}</div>
-  </g:if>
-  <g:form action="signIn">
-    <input type="hidden" name="targetUri" value="${targetUri}" />
-    <table>
-      <tbody>
-        <tr>
-          <td>Username:</td>
-          <td><input type="text" name="username" value="${username}" /></td>
-        </tr>
-        <tr>
-          <td>Password:</td>
-          <td><input type="password" name="password" value="" /></td>
-        </tr>
-        <tr>
-          <td>Remember me?:</td>
-          <td><g:checkBox name="rememberMe" value="${rememberMe}" /></td>
-        </tr>
-        <tr>
-          <td />
-          <td><input type="submit" value="Sign in" /></td>
-        </tr>
-      </tbody>
-    </table>
-  </g:form>
+  <div class="container">
+    
+        <g:if test="${flash.message}">
+        <bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
+        </g:if>
+      
+        <form class="form-signin" action ="signIn">
+          <h2 class="form-signin-heading text-info">Please sign in</h2>
+          <input type="text" class="input-block-level" placeholder="User name" name="username" value="${username}">
+          <input type="password" class="input-block-level" placeholder="Password" name="password" value="">
+          <label class="checkbox">
+            <input type="checkbox" name="rememberMe" value="${rememberMe}"> Remember me
+          </label>
+          <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+        </form>
+
+  </div>
 </body>
 </html>

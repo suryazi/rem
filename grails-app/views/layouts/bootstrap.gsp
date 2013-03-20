@@ -27,42 +27,38 @@
 	</head>
 
 	<body>
+          
+          <div class="container">
+            <div class="masthead">
+              <h3 class="muted text-info">Real Estate Management</h3>
+              <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                  <div class="container">
+                    <ul class="nav nav-pills">
+                      <li class="active"><a href="#">Home</a></li>
+                      <li><a href="#">Projects</a></li>
+                      <li><a href="#">Services</a></li>
+                      <li><a href="#">Downloads</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Contact</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div><!-- /.navbar -->
+            </div>
+          </div>
+		
+          <div class="container-fluid">
+                  <g:layoutBody/>
 
-		<nav class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container-fluid">
-					
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					
-					<a class="brand" href="${createLink(uri: '/')}">Real Estate Management</a>
+                  <hr>
 
-					<div class="nav-collapse">
-						<ul class="nav">							
-							<li<%= request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : '' %>><a href="${createLink(uri: '/')}">Home</a></li>
-							<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-								<li<%= c.logicalPropertyName == controllerName ? ' class="active"' : '' %>><g:link controller="${c.logicalPropertyName}">${c.naturalName}</g:link></li>
-							</g:each>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</nav>
+                  <footer>
+                    <rem:copyright startYear="2012">Al Woroud Real Estate Company.</rem:copyright>
+                  </footer>
+          </div>
 
-		<div class="container-fluid">
-			<g:layoutBody/>
-
-			<hr>
-
-			<footer>
-                          <rem:copyright startYear="2012">Al Woroud Real Estate Company.</rem:copyright>
-			</footer>
-		</div>
-
-		<r:layoutResources/>
+          <r:layoutResources/>
 
 	</body>
 </html>

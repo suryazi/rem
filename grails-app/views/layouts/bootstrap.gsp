@@ -28,19 +28,33 @@
 
 	<body>
           
-          <div class="container">
+          <div class="container-fluid">
             <div class="masthead">
               <h3 class="muted text-info">Real Estate Management</h3>
               <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
                   <div class="container">
                     <ul class="nav nav-pills">
-                      <li class="active"><a href="#">Home</a></li>
-                      <li><a href="#">Projects</a></li>
-                      <li><a href="#">Services</a></li>
-                      <li><a href="#">Downloads</a></li>
-                      <li><a href="#">About</a></li>
-                      <li><a href="#">Contact</a></li>
+                      <li><a href="#">Home</a></li>
+                      <li<%= "${controllerName}"=='owner'||"${controllerName}"=='property'||"${controllerName}"=='unit'||"${controllerName}"=='tenant'||"${controllerName}"=='rent'?' class="dropdown active"' : '' %>>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/rem/owner/index">Real Estate<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="/rem/owner/index">Owner</a></li>
+                          <li><a href="/rem/property/index">Property</a></li>
+                          <li><a href="/rem/unit/index">Unit</a></li>
+                          <li><a href="/rem/tenant/index">Tenant</a></li>
+                          <li><a href="/rem/rent/index">Rent</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <ul class="nav nav-pills">
+                      <li<%= "${controllerName}"=='auth'||"${controllerName}"=='signup'?' class="dropdown active"' : '' %>>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="/rem/owner/index">User<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="/rem/signup/index">Sign up</a></li>
+                          <li><a href="/rem/auth/signOut">Sign out</a></li>
+                        </ul>
+                      </li>
                     </ul>
                   </div>
                 </div>

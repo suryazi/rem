@@ -1,44 +1,62 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-
+<%@ page import="com.alworoud.User" %>
+<!doctype html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="layout" content="bootstrap" />
-  <title>Register</title>
-</head>
-<body>
-  
-  <g:if test="${flash.message}">
-    <div class="message">${flash.message}</div>
-  </g:if>
+	<head>
+		<meta name="layout" content="bootstrap">
+		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
+		<title><g:message code="default.create.label" args="[entityName]" /></title>
+	</head>
+	<body>
+		<div class="row-fluid">
+			
+			<g:render template="/templates/rem/sidemenu" model="[active: 'create']"/>
+			
+			<div class="span9">
 
-  <g:hasErrors bean="${user}">
-    <div class="alert alert-error">
-        <g:renderErrors bean="${user}" as="list"/>
-    </div>
-  </g:hasErrors>
+				<div class="page-header">
+					<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+				</div>
 
-  <g:form action="register">
-    <table>
-      <tbody>
-        <tr>
-          <td>Username:</td>
-          <td><input type="text" name="username" value="${username}" /></td>
-        </tr>
-        <tr>
-          <td>Password:</td>
-          <td><input type="password" name="password" value="" /></td>
-        </tr>
-        <tr>
-          <td>Confirm Password:</td>
-          <td><input type="password" name="password2" value="" /></td>
-        </tr>
-        <tr>
-          <td />
-          <td><input type="submit" value="Sign up" /></td>
-        </tr>
-      </tbody>
-    </table>
-  </g:form>
-</body>
+				<g:if test="${flash.message}">
+				<bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
+				</g:if>
+
+				<g:hasErrors bean="${user}">
+				<bootstrap:alert class="alert-error">
+				<ul>
+					<g:eachError bean="${user}" var="error">
+					<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+					</g:eachError>
+				</ul>
+				</bootstrap:alert>
+				</g:hasErrors>
+
+				<fieldset>
+					<g:form class="form-horizontal" action="register" >
+						<fieldset>
+                                                        <f:field bean="user" property="username"/>
+                                                        <f:field property="password">
+                                                            <g:passwordField name="password"/>
+                                                        </f:field>
+                                                        <f:field property="confirmPassword">
+                                                            <g:passwordField name="confirmPassword"/>
+                                                        </f:field>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary">
+									<i class="icon-ok icon-white"></i>
+									<g:message code="default.button.create.label" default="Create" />
+								</button>
+                                                                <g:link class="list" action="list" class="btn btn-warning">
+                                                                        <i class="icon-remove icon-white"></i>
+                                                                        <g:message code="default.button.cancel.label" default="Cancel" />
+                                                                </g:link>
+							</div>
+						</fieldset>
+					</g:form>
+				</fieldset>
+
+			</div>
+
+		</div>
+	</body>
 </html>

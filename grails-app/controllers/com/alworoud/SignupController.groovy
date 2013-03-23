@@ -30,8 +30,11 @@ class SignupController {
         else {
 
             // Make sure the passwords match
-            if (params.password != params.password2) {
+            if (params.password != params.confirmPassword) {
                 flash.message = "Passwords do not match"
+                redirect(action:'index')
+            } else if (params.password.length()<6){
+                flash.message = "Password less than 6 characters"
                 redirect(action:'index')
             }
 

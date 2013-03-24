@@ -36,6 +36,9 @@
 						<g:hiddenField name="version" value="${signupInstance?.version}" />
 						<fieldset>
 							<f:all bean="signupInstance"/>
+                                                        <img src="${createLink(controller: 'simpleCaptcha', action: 'captcha')}"/>
+<label for="captcha">Type the letters above in the box below:</label>
+<g:textField name="captcha"/>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

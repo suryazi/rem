@@ -36,11 +36,21 @@
 						<fieldset>
 							<f:field bean="signupInstance" property="username"/>
                                                         <f:field property="password">
-                                                            <g:passwordField name="password"/>
+                                                            <g:passwordField name="password" required=""/>
                                                         </f:field>
                                                         <f:field property="confirmPassword">
-                                                            <g:passwordField name="confirmPassword"/>
+                                                            <g:passwordField name="confirmPassword" required=""/>
                                                         </f:field>
+                                                        <div class="control-group">
+                                                          <div class="controls">
+                                                            <img src="${createLink(controller: 'simpleCaptcha', action: 'captcha')}" class="img-polaroid"/>
+                                                          </div>
+                                                        </div>
+                                                        <div class="control-group">
+                                                          <div class="controls">
+                                                            <g:textField name="captcha" required="" placeholder="Enter the above text"/>
+                                                          </div>
+                                                        </div>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

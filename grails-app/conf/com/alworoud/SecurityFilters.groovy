@@ -6,7 +6,8 @@ package com.alworoud
  */
 class SecurityFilters {
     def publicActions = [
-        signup: ['create'],
+        //signup: ['create','index'],
+        simpleCaptcha: ['captcha'],
         auth:['*']
     ]
     

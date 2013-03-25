@@ -16,6 +16,7 @@ class SignupController {
     static allowedMethods = [create: ['GET', 'POST'], edit: ['GET', 'POST'], delete: 'POST']
     
     def bcryptService
+    def simpleCaptchaService
 
     static grids ={
         signupJQGrid {
@@ -126,6 +127,10 @@ class SignupController {
                         return
                     } else if (params.password.length()<6){
                         flash.message = "Password less than 6 characters"
+                        render view: 'create', model: [signupInstance: signupInstance]
+                        return
+                    } else if (!simpleCaptchaService.validateCaptcha(params.captcha)){
+                        flash.message = "Enter correct captcha"
                         render view: 'create', model: [signupInstance: signupInstance]
                         return
                     }

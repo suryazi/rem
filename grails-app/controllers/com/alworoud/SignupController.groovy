@@ -187,7 +187,6 @@ class SignupController {
             redirect action: 'list'
             return
         }
-
         [signupInstance: signupInstance]
     }
 

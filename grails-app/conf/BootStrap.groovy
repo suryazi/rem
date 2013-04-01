@@ -16,7 +16,7 @@ class BootStrap {
         adminRole.save()
        
         def userRole = new Role(name:"User")
-        userRole.addToPermissions("Owner:*")
+        userRole.addToPermissions("Signup:display,reset")
         userRole.save()
         
         def passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()

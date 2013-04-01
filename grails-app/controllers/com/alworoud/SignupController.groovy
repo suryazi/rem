@@ -149,7 +149,7 @@ class SignupController {
                             signupInstance.save()
 
                             // Login user
-                            def authToken = new UsernamePasswordToken(signupInstance.username,params.password+params.username)
+                            //def authToken = new UsernamePasswordToken(signupInstance.username,params.password+params.username)
                             //This is used to login with newly created credentials.
                             //SecurityUtils.subject.login(authToken)
                             
@@ -171,6 +171,17 @@ class SignupController {
 
     def show() {
         def signupInstance = User.get(params.id)
+        if (!signupInstance) {
+			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
+            redirect action: 'list'
+            return
+        }
+
+        [signupInstance: signupInstance]
+    }
+    
+    def display() {
+        def signupInstance = User.findByUsername(SecurityUtils.subject?.principal)
         if (!signupInstance) {
 			flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
             redirect action: 'list'
@@ -210,18 +221,127 @@ class SignupController {
 	                return
 	            }
 	        }
+                
+                if (params.password != params.confirmPassword) {
+                        flash.message = "Passwords do not match"
+                        render view: 'edit', model: [signupInstance: signupInstance]
+                        return
+                    } else if (params.password.length()<6){
+                        flash.message = "Password less than 6 characters"
+                        render view: 'edit', model: [signupInstance: signupInstance]
+                        return
+                    } else if (!simpleCaptchaService.validateCaptcha(params.captcha)){
+                        flash.message = "Enter correct captcha"
+                        render view: 'edit', model: [signupInstance: signupInstance]
+                        return
+                    }
 
-	        signupInstance.properties = params
+                    // Passwords match. Let's attempt to save the user
+                    else {
+                        // Create user
+                        def passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()
+                        signupInstance.passwordHash = new Sha512Hash(params.password+signupInstance.username,passwordSalt,16384).toBase64()
+                        signupInstance.passwordSalt = passwordSalt
 
-	        if (!signupInstance.save(flush: true)) {
-	            render view: 'edit', model: [signupInstance: signupInstance]
+                        if (signupInstance.save()) {
+
+                            // Add USER role to new user
+                            def userRole =  Role.findByName('User')
+                            signupInstance.addToRoles(userRole)
+                            signupInstance.save()
+
+                            // Login user
+                            //def authToken = new UsernamePasswordToken(signupInstance.username,params.password+params.username)
+                            //This is used to login with newly created credentials.
+                            //SecurityUtils.subject.login(authToken)
+                            
+                            //This will provide the newly created username
+                            //SecurityUtils.subject?.principal
+
+                            flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), signupInstance.id])
+                            redirect action: 'show', id: signupInstance.id
+                                    break
+                        } else {
+                            render view: 'edit', model: [signupInstance: signupInstance]
+                            return
+                        }
+		}
+                }
+    }
+    
+    def reset() {
+		switch (request.method) {
+		case 'GET':
+	        def signupInstance = User.findByUsername(SecurityUtils.subject?.principal)
+	        if (!signupInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
+	            redirect action: 'list'
 	            return
 	        }
 
-			flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), signupInstance.id])
-	        redirect action: 'show', id: signupInstance.id
+	        [signupInstance: signupInstance]
 			break
+		case 'POST':
+	        def signupInstance = User.findByUsername(SecurityUtils.subject?.principal)
+	        if (!signupInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
+	            redirect action: 'list'
+	            return
+	        }
+
+	        if (params.version) {
+	            def version = params.version.toLong()
+	            if (signupInstance.version > version) {
+	                signupInstance.errors.rejectValue('version', 'default.optimistic.locking.failure',
+	                          [message(code: 'user.label', default: 'User')] as Object[],
+	                          "Another user has updated this User while you were editing")
+	                render view: 'edit', model: [signupInstance: signupInstance]
+	                return
+	            }
+	        }
+                
+                if (params.password != params.confirmPassword) {
+                        flash.message = "Passwords do not match"
+                        render view: 'edit', model: [signupInstance: signupInstance]
+                        return
+                    } else if (params.password.length()<6){
+                        flash.message = "Password less than 6 characters"
+                        render view: 'edit', model: [signupInstance: signupInstance]
+                        return
+                    } else if (!simpleCaptchaService.validateCaptcha(params.captcha)){
+                        flash.message = "Enter correct captcha"
+                        render view: 'edit', model: [signupInstance: signupInstance]
+                        return
+                    }
+
+                    // Passwords match. Let's attempt to save the user
+                    else {
+                        // Create user
+                        def passwordSalt = new SecureRandomNumberGenerator().nextBytes().getBytes()
+                        signupInstance.passwordHash = new Sha512Hash(params.password+signupInstance.username,passwordSalt,16384).toBase64()
+                        signupInstance.passwordSalt = passwordSalt
+
+                        if (signupInstance.save()) {
+
+
+                            // Login user
+                            //def authToken = new UsernamePasswordToken(signupInstance.username,params.password+params.username)
+                            //This is used to login with newly created credentials.
+                            //SecurityUtils.subject.login(authToken)
+                            
+                            //This will provide the newly created username
+                            //SecurityUtils.subject?.principal
+
+                            flash.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), signupInstance.id])
+                            redirect action: 'display', id: signupInstance.id
+                                    break
+                        } else {
+                            flash.message = message('Update failed', args: [message(code: 'user.label', default: 'User'), signupInstance.id])
+                            redirect action: 'display', id: signupInstance.id
+                            return
+                        }
 		}
+                }
     }
 
     def delete() {

@@ -52,6 +52,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="/rem/owner/index">User<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                           <li><a href="/rem/signup/create">Sign up</a></li>
+                          <li><a href="/rem/signup/reset">Reset password</a></li>
                           <li><a href="/rem/auth/signOut">Sign out</a></li>
                         </ul>
                       </li>

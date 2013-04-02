@@ -53,6 +53,7 @@
                         <ul class="dropdown-menu">
                           <li><a href="/rem/signup/create">Sign up</a></li>
                           <li><a href="/rem/signup/reset">Reset password</a></li>
+                          <li><a href="/rem/role/index">Role</a></li>
                           <li><a href="/rem/auth/signOut">Sign out</a></li>
                         </ul>
                       </li>

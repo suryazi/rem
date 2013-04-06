@@ -74,7 +74,7 @@ class PermissionController {
                 }
                 acl {
                     jqgrid {
-                        editable false
+                        editable true
                     }
                 }
                 version {

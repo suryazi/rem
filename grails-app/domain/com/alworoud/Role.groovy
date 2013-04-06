@@ -3,7 +3,7 @@ package com.alworoud
 class Role {
     String name
 
-    static hasMany = [ users: User, permissions: String ]
+    static hasMany = [ users: User, permissions: Permission ]
     static belongsTo = User
 
     static constraints = {

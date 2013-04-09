@@ -52,9 +52,13 @@
 				<g:form>
 					<g:hiddenField name="id" value="${signupInstance?.id}" />
 					<div class="form-actions">
-						<g:link class="btn" action="edit" id="${signupInstance?.id}">
+						<g:link class="btn" action="editPassword" id="${signupInstance?.id}">
 							<i class="icon-pencil"></i>
-							<g:message code="default.button.edit.label" default="Edit" />
+							<g:message code="default.button.editPassword.label" default="Edit Password" />
+						</g:link>
+                                                <g:link class="btn btn-info" action="editRole" id="${signupInstance?.id}">
+							<i class="icon-pencil"></i>
+							<g:message code="default.button.editRole.label" default="Edit Role" />
 						</g:link>
 						<button class="btn btn-danger" type="submit" name="_action_delete" onclick="return confirm('Are you sure?')">
 							<i class="icon-trash icon-white"></i>

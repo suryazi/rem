@@ -190,7 +190,7 @@ class SignupController {
         [signupInstance: signupInstance]
     }
 
-    def edit() {
+    def editPassword() {
 		switch (request.method) {
 		case 'GET':
 	        def signupInstance = User.get(params.id)
@@ -216,22 +216,22 @@ class SignupController {
 	                signupInstance.errors.rejectValue('version', 'default.optimistic.locking.failure',
 	                          [message(code: 'user.label', default: 'User')] as Object[],
 	                          "Another user has updated this User while you were editing")
-	                render view: 'edit', model: [signupInstance: signupInstance]
+	                render view: 'editPassword', model: [signupInstance: signupInstance]
 	                return
 	            }
 	        }
                 
                 if (params.password != params.confirmPassword) {
                         flash.message = "Passwords do not match"
-                        render view: 'edit', model: [signupInstance: signupInstance]
+                        render view: 'editPassword', model: [signupInstance: signupInstance]
                         return
                     } else if (params.password.length()<6){
                         flash.message = "Password less than 6 characters"
-                        render view: 'edit', model: [signupInstance: signupInstance]
+                        render view: 'editPassword', model: [signupInstance: signupInstance]
                         return
                     } else if (!simpleCaptchaService.validateCaptcha(params.captcha)){
                         flash.message = "Enter correct captcha"
-                        render view: 'edit', model: [signupInstance: signupInstance]
+                        render view: 'editPassword', model: [signupInstance: signupInstance]
                         return
                     }
 
@@ -261,11 +261,61 @@ class SignupController {
                             redirect action: 'show', id: signupInstance.id
                                     break
                         } else {
-                            render view: 'edit', model: [signupInstance: signupInstance]
+                            render view: 'editPassword', model: [signupInstance: signupInstance]
                             return
                         }
 		}
                 }
+    }
+    
+    def editRole() {
+		switch (request.method) {
+		case 'GET':
+	        def signupInstance = User.get(params.id)
+	        if (!signupInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
+	            redirect action: 'list'
+	            return
+	        }
+
+	        [signupInstance: signupInstance]
+			break
+		case 'POST':
+	        def signupInstance = User.get(params.id)
+	        if (!signupInstance) {
+	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
+	            redirect action: 'list'
+	            return
+	        }
+
+	        if (params.version) {
+	            def version = params.version.toLong()
+	            if (signupInstance.version > version) {
+	                signupInstance.errors.rejectValue('version', 'default.optimistic.locking.failure',
+	                          [message(code: 'user.label', default: 'User')] as Object[],
+	                          "Another user has updated this User while you were editing")
+	                render view: 'editRole', model: [signupInstance: signupInstance]
+	                return
+	            }
+	        }
+                
+                if (!simpleCaptchaService.validateCaptcha(params.captcha)){
+                        flash.message = "Enter correct captcha"
+                        render view: 'editRole', model: [signupInstance: signupInstance]
+                        return
+                    }
+                
+                signupInstance.properties = params
+
+	        if (!signupInstance.save(flush: true)) {
+	            render view: 'editRole', model: [signupInstance: signupInstance]
+	            return
+	        }
+
+			flash.message = message(code: 'default.updated.message', args: [message(code: 'role.label', default: 'Role'), signupInstance.id])
+	        redirect action: 'show', id: signupInstance.id
+			break
+		}
     }
     
     def reset() {

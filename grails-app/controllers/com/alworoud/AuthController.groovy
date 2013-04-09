@@ -75,6 +75,22 @@ class AuthController {
     }
 
     def unauthorized = {
-        render "You do not have permission to access this page."
+        log.info "Access failure for user '${SecurityUtils.subject?.principal}'."
+            flash.message = message(code: "access.denied")
+
+            // Keep the username and "remember me" setting so that the
+            // user doesn't have to enter them again.
+            def m = [ username: SecurityUtils.subject?.principal ]
+            if (params.rememberMe) {
+                m["rememberMe"] = true
+            }
+
+            // Remember the target URI too.
+            if (params.targetUri) {
+                m["targetUri"] = params.targetUri
+            }
+
+            // Now redirect back to the login page.
+            redirect(action: "login", params: m)
     }
 }

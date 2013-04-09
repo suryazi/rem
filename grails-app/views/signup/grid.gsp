@@ -3,11 +3,11 @@
 <html>
 	<head>
 		<meta name="layout" content="bootstrap">
-                <g:set var="entityName" value="${message(code: 'user.label', default: 'Rent')}" />
+                <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
 		<title><g:message code="default.grid.label" args="[entityName]" /></title>
                 <r:script>
                     function linkShowId(cellvalue, options, rowObject) {
-                        return "<a href='/rem/user/show/" + cellvalue + "'>" + cellvalue + "</a> ";
+                        return "<a href='/rem/signup/show/" + cellvalue + "'>" + cellvalue + "</a> ";
                     }
                 </r:script>
                 <r:require modules="easygrid-jqgrid-dev,export"/>

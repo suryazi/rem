@@ -57,6 +57,7 @@ grails.project.dependency.resolution = {
         compile ":easygrid:1.2.1"
         compile ":twitter-bootstrap:2.2.2"
         runtime ":fields:1.3"
+        compile ":jquery-ui:1.8.24"
         
         //Joda Time Plugin
         compile ":joda-time:1.4"

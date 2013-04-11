@@ -15,6 +15,7 @@
 		<![endif]-->
 
 		<r:require modules="scaffolding"/>
+                <r:require module="jquery-ui"/>
 
 		<!-- Le fav and touch icons -->
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">

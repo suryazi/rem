@@ -6,6 +6,12 @@
 		<g:set var="entityName" value="${message(code: 'rent.label', default: 'Rent')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
                 <r:require modules="easygrid-selection-dev"/>
+                <r:script type="text/javascript">
+                    $(document).ready(function()
+                    {
+                      $("#datepicker").datepicker({dateFormat: 'yyyy/mm/dd'});
+                    })
+                </r:script>
 	</head>
 	<body>
 		<div class="row-fluid">
@@ -51,6 +57,9 @@
                                                           <f:field property="wtrCh"/>
                                                           <f:field property="mntnCh"/>
                                                         </f:with>
+                                                        <div>
+                                                          <p> Between <input type="text" id="datepicker"> </p>        
+                                                        </div>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

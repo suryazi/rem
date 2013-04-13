@@ -9,8 +9,8 @@
                 <r:script type="text/javascript">
                     $(document).ready(function()
                     {
-                      $("#stdatepicker").datepicker({dateFormat: 'yy/mm/dd'});
-                      $("#duedatepicker").datepicker({dateFormat: 'yy/mm/dd'});
+                      $("#stdatepicker").datepicker({dateFormat: 'yy-mm-dd'});
+                      $("#duedatepicker").datepicker({dateFormat: 'yy-mm-dd'});
                     })
                 </r:script>
 	</head>
@@ -53,10 +53,10 @@
                                                         </div>
 							<f:with bean="rentInstance">
                                                           <f:field property="stDt">
-                                                            <g:textField name="stDt" id="stdatepicker" required=""/>
+                                                            <g:textField name="stDt" id="stdatepicker" value="${rentInstance?.stDt?.toDateTime()?.toDate()}" formatString="${joda.inputPattern(type: org.joda.time.LocalDate)}" required=""/>
                                                           </f:field>
                                                           <f:field property="dueDt">
-                                                            <g:textField name="dueDt" id="duedatepicker" required=""/>
+                                                            <g:textField name="dueDt" id="duedatepicker" value="${rentInstance?.dueDt?.toDateTime()?.toDate()}" formatString="${joda.inputPattern(type: org.joda.time.LocalDate)}" required=""/>
                                                           </f:field>
                                                           <f:field property="rentAmt"/>
                                                           <f:field property="wtrCh"/>

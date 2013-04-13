@@ -9,7 +9,8 @@
                 <r:script type="text/javascript">
                     $(document).ready(function()
                     {
-                      $("#datepicker").datepicker({dateFormat: 'yyyy/mm/dd'});
+                      $("#stdatepicker").datepicker({dateFormat: 'yy/mm/dd'});
+                      $("#duedatepicker").datepicker({dateFormat: 'yy/mm/dd'});
                     })
                 </r:script>
 	</head>
@@ -51,15 +52,16 @@
                                                                 </div>
                                                         </div>
 							<f:with bean="rentInstance">
-                                                          <f:field property="stDt"/>
-                                                          <f:field property="dueDt"/>
+                                                          <f:field property="stDt">
+                                                            <g:textField name="stDt" id="stdatepicker" required=""/>
+                                                          </f:field>
+                                                          <f:field property="dueDt">
+                                                            <g:textField name="dueDt" id="duedatepicker" required=""/>
+                                                          </f:field>
                                                           <f:field property="rentAmt"/>
                                                           <f:field property="wtrCh"/>
                                                           <f:field property="mntnCh"/>
                                                         </f:with>
-                                                        <div>
-                                                          <p> Between <input type="text" id="datepicker"> </p>        
-                                                        </div>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">
 									<i class="icon-ok icon-white"></i>

@@ -13,7 +13,7 @@
       
         <form class="form-signin" action ="signIn">
           <h2 class="form-signin-heading text-info">Please sign in</h2>
-          <input type="text" class="input-block-level" placeholder="User name" name="username" value="${username}">
+          <input type="text" class="input-block-level" placeholder="User name" name="username" value="${username}" autofocus>
           <input type="password" class="input-block-level" placeholder="Password" name="password" value="">
           <label class="checkbox ">
             <input type="checkbox" name="rememberMe" value="${rememberMe}"> Remember me

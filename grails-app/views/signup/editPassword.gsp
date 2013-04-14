@@ -36,7 +36,7 @@
 						<g:hiddenField name="version" value="${signupInstance?.version}" />
 						<fieldset>
 							<f:field property="password">
-                                                            <g:passwordField name="password" required=""/>
+                                                            <g:passwordField name="password" required="" autofocus=""/>
                                                         </f:field>
                                                         <f:field property="confirmPassword">
                                                             <g:passwordField name="confirmPassword" required=""/>

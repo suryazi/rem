@@ -34,7 +34,9 @@
 				<fieldset>
 					<g:form class="form-horizontal" action="create"  enctype="multipart/form-data">
 						<fieldset>
-							<f:field bean="signupInstance" property="username"/>
+							<f:field property="username">
+                                                          <g:textField name="username" value="${signupInstance?.username}" required="" autofocus=""/>
+                                                        </f:field>
                                                         <f:field bean="signupInstance" property="roles" />
                                                         <f:field property="password">
                                                             <g:passwordField name="password" required=""/>

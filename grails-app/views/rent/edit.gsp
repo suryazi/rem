@@ -6,6 +6,13 @@
 		<g:set var="entityName" value="${message(code: 'rent.label', default: 'Rent')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
                 <r:require modules="easygrid-selection-dev"/>
+                <r:script type="text/javascript">
+                    $(document).ready(function()
+                    {
+                      $("#stdatepicker").datepicker({dateFormat: 'yy-mm-dd'});
+                      $("#duedatepicker").datepicker({dateFormat: 'yy-mm-dd'});
+                    })
+                </r:script>
 	</head>
 	<body>
 		<div class="row-fluid">
@@ -46,8 +53,12 @@
                                                                 </div>
                                                         </div>
 							<f:with bean="rentInstance">
-                                                          <f:field property="stDt"/>
-                                                          <f:field property="dueDt"/>
+                                                          <f:field property="stDt">
+                                                            <g:textField name="stDt" id="stdatepicker" value="${rentInstance?.stDt}" formatString="${joda.inputPattern(type: org.joda.time.LocalDate)}" required=""/>
+                                                          </f:field>
+                                                          <f:field property="dueDt">
+                                                            <g:textField name="dueDt" id="duedatepicker" value="${rentInstance?.dueDt}" formatString="${joda.inputPattern(type: org.joda.time.LocalDate)}" required=""/>
+                                                          </f:field>
                                                           <f:field property="rentAmt"/>
                                                           <f:field property="wtrCh"/>
                                                           <f:field property="mntnCh"/>

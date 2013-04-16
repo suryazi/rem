@@ -4,6 +4,8 @@ import com.alworoud.Permission
 import org.apache.shiro.crypto.hash.Sha512Hash
 import org.apache.shiro.crypto.RandomNumberGenerator
 import org.apache.shiro.crypto.SecureRandomNumberGenerator
+/*import org.joda.time.*
+import org.joda.time.chrono.* */
 
 class BootStrap {
    
@@ -11,6 +13,25 @@ class BootStrap {
     def bcryptService
    
     def init = { servletContext ->
+        
+        //Testing Gregorian to Hijri date conversion and vice versa
+        
+        /*Chronology iso = ISOChronology.getInstanceUTC()
+        Chronology hijri = IslamicChronology.getInstanceUTC()
+        
+        LocalDate todayIso = new LocalDate(2013, 4 , 16, iso)
+        LocalDate todayHijri =  new LocalDate(todayIso.toDate(),hijri)
+        println todayIso
+        println todayHijri
+        
+        // setup date object for midday on May Day 2004 (ISO year 2004)
+        DateTime dtISO = new DateTime(2004, 5, 1, 12, 0, 0, 0)
+
+        // find out what the same instant is using the Islamic Chronology
+        DateTime dtIslamic = dtISO.withChronology(IslamicChronology.getInstance())
+        
+        println dtIslamic
+        println dtISO*/
    
         if (!User.findByUsername("Admin") ){
             def permissions = new Permission(acl: "*:*")

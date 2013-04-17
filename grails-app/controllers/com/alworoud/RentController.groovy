@@ -3,7 +3,7 @@ package com.alworoud
 import org.grails.plugin.easygrid.Easygrid
 import org.springframework.dao.DataIntegrityViolationException
 import com.alworoud.DateParser as d
-import org.joda.time.*
+import org.joda.time.LocalDate
 
 @Easygrid
 class RentController {
@@ -123,39 +123,35 @@ class RentController {
                             op=filter.params.stDt[0]
                             if (op == '='){
                                 val=filter.params.stDt[1..-1]
-                                eq('stDt',"${val}".toDate())
-                                //DateTime startDate = new DateTime()
-                                //Days dys = Days.daysBetween(startDate, d.frmt(val))
-                                //println('Hello'+ dys.getDays())
-                                //println (d.te(val))
+                                eq('stDt',new LocalDate(val))
                             }
                             else if (op == '>'){
                                 if (val.length() > 2){
                                     op=filter.params.stDt[0..1]
                                     if  (op == '>='){
                                         val=filter.params.stDt[2..-1]
-                                        ge('stDt',"${val}".toDate())
+                                        ge('stDt',new LocalDate(val))
                                     }else{
                                         val=filter.params.stDt[1..-1]
-                                        gt('stDt',"${val}".toDate())
+                                        gt('stDt',new LocalDate(val))
                                     }
                                 }else{
                                     val=filter.params.stDt[1..-1]
-                                    gt('stDt',"${val}".toDate())
+                                    gt('stDt',new LocalDate(val))
                                 }
                             }else if (op == '<'){
                                 if (val.length() > 2){
                                     op=filter.params.stDt[0..1]
                                     if (op == '<='){
                                         val=filter.params.stDt[2..-1]
-                                        le('stDt',"${val}".toDate())
+                                        le('stDt',new LocalDate(val))
                                     }else{
                                         val=filter.params.stDt[1..-1]
-                                        lt('stDt',"${val}".toDate())
+                                        lt('stDt',new LocalDate(val))
                                     }
                                 }else{
                                     val=filter.params.stDt[1..-1]
-                                    lt('stDt',"${val}".toDate())
+                                    lt('stDt',new LocalDate(val))
                                 }
                             }
                         }
@@ -171,34 +167,34 @@ class RentController {
                             op=filter.params.dueDt[0]
                             if (op == '='){
                                 val=filter.params.dueDt[1..-1]
-                                eq('dueDt',"${val}".toDate())
+                                eq('dueDt',new LocalDate(val))
                             }else if (op == '>'){
                                 if (val.length() > 2){
                                     op=filter.params.dueDt[0..1]
                                     if  (op == '>='){
                                         val=filter.params.dueDt[2..-1]
-                                        ge('dueDt',"${val}".toDate())
+                                        ge('dueDt',new LocalDate(val))
                                     }else{
                                         val=filter.params.dueDt[1..-1]
-                                        gt('dueDt',"${val}".toDate())
+                                        gt('dueDt',new LocalDate(val))
                                     }
                                 }else{
                                     val=filter.params.dueDt[1..-1]
-                                    gt('dueDt',"${val}".toDate())
+                                    gt('dueDt',new LocalDate(val))
                                 }
                             }else if (op == '<'){
                                 if (val.length() > 2){
                                     op=filter.params.dueDt[0..1]
                                     if (op == '<='){
                                         val=filter.params.dueDt[2..-1]
-                                        le('dueDt',"${val}".toDate())
+                                        le('dueDt',new LocalDate(val))
                                     }else{
                                         val=filter.params.dueDt[1..-1]
-                                        lt('dueDt',"${val}".toDate())
+                                        lt('dueDt',new LocalDate(val))
                                     }
                                 }else{
                                     val=filter.params.dueDt[1..-1]
-                                    lt('dueDt',"${val}".toDate())
+                                    lt('dueDt',new LocalDate(val))
                                 }
                             }
                         }

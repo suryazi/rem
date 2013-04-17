@@ -23,7 +23,7 @@ class Rent {
         totCh(blank:false)
     }
     static mapping = {
-        totCh formula: 'RENT_AMT+WTR_CH+MNTN_CH'
+        totCh formula: 'RENT_AMT+WTR_CH+OT_CH'
     }
     static belongsTo = [unit:Unit]
 }

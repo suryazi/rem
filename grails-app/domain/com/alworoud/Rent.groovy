@@ -9,7 +9,7 @@ class Rent {
     LocalDate dueDt
     BigDecimal rentAmt
     BigDecimal wtrCh=0
-    BigDecimal mntnCh=0
+    BigDecimal otCh=0
     BigDecimal totCh
     DateTime dateCreated
     DateTime lastUpdated

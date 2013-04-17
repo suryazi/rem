@@ -19,7 +19,7 @@ class Rent {
         dueDt(blank:false)
         rentAmt(blank:false)
         wtrCh(nullable:true)
-        mntnCh(nullable:true)
+        otCh(nullable:true)
         totCh(blank:false)
     }
     static mapping = {

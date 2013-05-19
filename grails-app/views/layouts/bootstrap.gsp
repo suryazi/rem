@@ -28,7 +28,6 @@
 	</head>
 
 	<body>
-          
           <div class="container-fluid">
             <div class="masthead">
               <h3 class="muted text-info">Real Estate Management</h3>
@@ -36,7 +35,9 @@
                 <div class="navbar-inner">
                   <div class="container">
                     <ul class="nav nav-pills">
-                      <li><a href="#">Home</a></li>
+                      <li><img src="${createLinkTo(dir:'images',file:'AlWoroud.jpg')}" class="img-polaroid" alt="Al Woroud"></li>
+                    </ul>
+                    <ul class="nav nav-pills">
                       <li<%= "${controllerName}"=='owner'||"${controllerName}"=='property'||"${controllerName}"=='unit'||"${controllerName}"=='tenant'||"${controllerName}"=='rent'?' class="dropdown active"' : '' %>>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="/rem/owner/index">Real Estate<b class="caret"></b></a>
                         <ul class="dropdown-menu">

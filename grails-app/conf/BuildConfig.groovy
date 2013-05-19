@@ -47,7 +47,7 @@ grails.project.dependency.resolution = {
 
     plugins {
         runtime ":hibernate:$grailsVersion"
-        runtime ":resources:1.2.RC2"
+        runtime ":resources:1.2"
         
         //Test plugins
         compile ":build-test-data:2.0.3"

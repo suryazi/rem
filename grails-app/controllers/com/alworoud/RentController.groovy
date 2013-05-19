@@ -289,41 +289,41 @@ class RentController {
                         editable false
                     }
                 }
-                mntnCh {
+                otCh {
                     filterClosure {filter ->
-                        def val=filter.params.mntnCh,op
+                        def val=filter.params.otCh,op
                         if (val.length() > 1){
-                            op=filter.params.mntnCh[0]
+                            op=filter.params.otCh[0]
                             if (op == '='){
-                                val=filter.params.mntnCh[1..-1]
-                                eq('mntnCh',"${val}".toBigDecimal())
+                                val=filter.params.otCh[1..-1]
+                                eq('otCh',"${val}".toBigDecimal())
                             }else if (op == '>'){
                                 if (val.length() > 2){
-                                    op=filter.params.mntnCh[0..1]
+                                    op=filter.params.otCh[0..1]
                                     if  (op == '>='){
-                                        val=filter.params.mntnCh[2..-1]
-                                        ge('mntnCh',"${val}".toBigDecimal())
+                                        val=filter.params.otCh[2..-1]
+                                        ge('otCh',"${val}".toBigDecimal())
                                     }else{
-                                        val=filter.params.mntnCh[1..-1]
-                                        gt('mntnCh',"${val}".toBigDecimal())
+                                        val=filter.params.otCh[1..-1]
+                                        gt('otCh',"${val}".toBigDecimal())
                                     }
                                 }else{
-                                    val=filter.params.mntnCh[1..-1]
-                                    gt('mntnCh',"${val}".toBigDecimal())
+                                    val=filter.params.otCh[1..-1]
+                                    gt('otCh',"${val}".toBigDecimal())
                                 }
                             }else if (op == '<'){
                                 if (val.length() > 2){
-                                    op=filter.params.mntnCh[0..1]
+                                    op=filter.params.otCh[0..1]
                                     if (op == '<='){
-                                        val=filter.params.mntnCh[2..-1]
-                                        le('mntnCh',"${val}".toBigDecimal())
+                                        val=filter.params.otCh[2..-1]
+                                        le('otCh',"${val}".toBigDecimal())
                                     }else{
-                                        val=filter.params.mntnCh[1..-1]
-                                        lt('mntnCh',"${val}".toBigDecimal())
+                                        val=filter.params.otCh[1..-1]
+                                        lt('otCh',"${val}".toBigDecimal())
                                     }
                                 }else{
-                                    val=filter.params.mntnCh[1..-1]
-                                    lt('mntnCh',"${val}".toBigDecimal())
+                                    val=filter.params.otCh[1..-1]
+                                    lt('otCh',"${val}".toBigDecimal())
                                 }
                             }
                         }

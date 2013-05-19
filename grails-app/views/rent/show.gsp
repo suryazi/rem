@@ -59,10 +59,10 @@
 						
 					</g:if>
 				
-					<g:if test="${rentInstance?.mntnCh}">
-						<dt><g:message code="rent.mntnCh.label" default="Mntn Ch" /></dt>
+					<g:if test="${rentInstance?.otCh}">
+						<dt><g:message code="rent.otCh.label" default="Ot Ch" /></dt>
 						
-							<dd><g:fieldValue bean="${rentInstance}" field="mntnCh"/></dd>
+							<dd><g:fieldValue bean="${rentInstance}" field="otCh"/></dd>
 						
 					</g:if>
 				

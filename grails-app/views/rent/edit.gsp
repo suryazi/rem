@@ -61,7 +61,7 @@
                                                           </f:field>
                                                           <f:field property="rentAmt"/>
                                                           <f:field property="wtrCh"/>
-                                                          <f:field property="mntnCh"/>
+                                                          <f:field property="otCh"/>
                                                         </f:with>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">

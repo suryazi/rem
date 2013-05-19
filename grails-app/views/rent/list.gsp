@@ -36,7 +36,7 @@
 						
 							<g:sortableColumn property="wtrCh" title="${message(code: 'rent.wtrCh.label', default: 'Wtr Ch')}" />
 						
-							<g:sortableColumn property="mntnCh" title="${message(code: 'rent.mntnCh.label', default: 'Mntn Ch')}" />
+							<g:sortableColumn property="otCh" title="${message(code: 'rent.otCh.label', default: 'Ot Ch')}" />
 						
 							<th></th>
 						</tr>

@@ -1,5 +1,6 @@
 package com.alworoud
 
+import org.joda.time.Months
 import org.joda.time.LocalDate
 import org.joda.time.DateTime
 
@@ -9,6 +10,7 @@ class Rent {
     LocalDate dueDt
     LocalDate hStDt
     LocalDate hDueDt
+    Months dur
     BigDecimal rentAmt
     BigDecimal wtrCh=0
     BigDecimal otCh=0
@@ -21,6 +23,7 @@ class Rent {
         dueDt(blank:false)
         hStDt(blank:false)
         hDueDt(blank:false)
+        dur(blank:false)
         rentAmt(blank:false)
         wtrCh(nullable:true)
         otCh(nullable:true)

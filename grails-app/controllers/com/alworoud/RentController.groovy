@@ -491,6 +491,7 @@ class RentController {
                 def rentInstance = new Rent(params)
                 rentInstance.hStDt = new LocalDate(new LocalDate(params.stDt).toDate(),hijri)
                 rentInstance.hDueDt = new LocalDate(new LocalDate(params.dueDt).toDate(),hijri)
+                rentInstance.dur = Months.monthsBetween(new LocalDate(params.stDt), new LocalDate(params.dueDt))
 	        if (!rentInstance.save(flush: true)) {
 	            render view: 'create', model: [rentInstance: rentInstance]
 	            return
@@ -530,6 +531,7 @@ class RentController {
                 def rentInstance = new Rent(params)
                 rentInstance.hStDt = new LocalDate(new LocalDate(params.stDt).toDate(),hijri)
                 rentInstance.hDueDt = new LocalDate(new LocalDate(params.dueDt).toDate(),hijri)
+                rentInstance.dur = Months.monthsBetween(new LocalDate(params.stDt), new LocalDate(params.dueDt))
 	        if (!rentInstance) {
 	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'rent.label', default: 'Rent'), params.id])
 	            redirect action: 'list'

@@ -20,10 +20,12 @@ class BootStrap {
         /*Chronology iso = ISOChronology.getInstance()
         Chronology hijri = IslamicChronology.getInstance()
         
-        LocalDate todayIso = new LocalDate(2013, 4 , 17, iso)
+        LocalDate todayIso = new LocalDate(2013, 5 , 19, iso)
+        LocalDate testIso = new LocalDate(2013,4,19, iso)
         LocalDate todayHijri =  new LocalDate(todayIso.toDate(),hijri)
         println todayHijri
         println todayIso
+        println testIso
         
         // setup date object for midday on May Day 2004 (ISO year 2004)
         DateTime dtISO = new DateTime(2013, 4, 17, 0, 0, 0, 0)
@@ -33,6 +35,8 @@ class BootStrap {
         
         println dtIslamic
         println dtISO
+        
+        println Months.monthsBetween(testIso, todayIso)
         
         dtIslamic = new DateTime(1434, 6, 7, 0, 0, 0, 0,hijri)
 

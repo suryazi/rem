@@ -45,6 +45,13 @@
 						
 					</g:if>
                                   
+                                        <g:if test="${rentInstance?.dur}">
+						<dt><g:message code="rent.dur.label" default="Duration" /></dt>
+						
+							<dd><g:fieldValue bean="${rentInstance}" field="dur"/></dd>
+						
+					</g:if>
+                                  
                                         <g:if test="${rentInstance?.hStDt}">
 						<dt><g:message code="rent.hStDt.label" default="Hijri St Dt" /></dt>
 						

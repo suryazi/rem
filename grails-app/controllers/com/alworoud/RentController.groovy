@@ -3,7 +3,8 @@ package com.alworoud
 import org.grails.plugin.easygrid.Easygrid
 import org.springframework.dao.DataIntegrityViolationException
 import com.alworoud.DateParser as d
-import org.joda.time.LocalDate
+import org.joda.time.*
+import org.joda.time.chrono.IslamicChronology
 
 @Easygrid
 class RentController {
@@ -195,6 +196,93 @@ class RentController {
                                 }else{
                                     val=filter.params.dueDt[1..-1]
                                     lt('dueDt',new LocalDate(val))
+                                }
+                            }
+                        }
+                    }
+                    jqgrid {
+                        editable false
+                    }
+                }
+                hStDt {
+                    filterClosure {filter ->
+                        def val=filter.params.hStDt,op
+                        if (val.length() > 1){
+                            op=filter.params.hStDt[0]
+                            if (op == '='){
+                                val=filter.params.hStDt[1..-1]
+                                eq('hStDt',new LocalDate(val))
+                            }
+                            else if (op == '>'){
+                                if (val.length() > 2){
+                                    op=filter.params.hStDt[0..1]
+                                    if  (op == '>='){
+                                        val=filter.params.hStDt[2..-1]
+                                        ge('hStDt',new LocalDate(val))
+                                    }else{
+                                        val=filter.params.hStDt[1..-1]
+                                        gt('hStDt',new LocalDate(val))
+                                    }
+                                }else{
+                                    val=filter.params.hStDt[1..-1]
+                                    gt('hStDt',new LocalDate(val))
+                                }
+                            }else if (op == '<'){
+                                if (val.length() > 2){
+                                    op=filter.params.hStDt[0..1]
+                                    if (op == '<='){
+                                        val=filter.params.hStDt[2..-1]
+                                        le('hStDt',new LocalDate(val))
+                                    }else{
+                                        val=filter.params.hStDt[1..-1]
+                                        lt('hStDt',new LocalDate(val))
+                                    }
+                                }else{
+                                    val=filter.params.hStDt[1..-1]
+                                    lt('hStDt',new LocalDate(val))
+                                }
+                            }
+                        }
+                    }
+                    jqgrid {
+                        editable false
+                    }
+                }
+                hDueDt {
+                    filterClosure {filter ->
+                        def val=filter.params.hDueDt,op
+                        if (val.length() > 1){
+                            op=filter.params.hDueDt[0]
+                            if (op == '='){
+                                val=filter.params.hDueDt[1..-1]
+                                eq('hDueDt',new LocalDate(val))
+                            }else if (op == '>'){
+                                if (val.length() > 2){
+                                    op=filter.params.hDueDt[0..1]
+                                    if  (op == '>='){
+                                        val=filter.params.hDueDt[2..-1]
+                                        ge('hDueDt',new LocalDate(val))
+                                    }else{
+                                        val=filter.params.hDueDt[1..-1]
+                                        gt('hDueDt',new LocalDate(val))
+                                    }
+                                }else{
+                                    val=filter.params.hDueDt[1..-1]
+                                    gt('hDueDt',new LocalDate(val))
+                                }
+                            }else if (op == '<'){
+                                if (val.length() > 2){
+                                    op=filter.params.hDueDt[0..1]
+                                    if (op == '<='){
+                                        val=filter.params.hDueDt[2..-1]
+                                        le('hDueDt',new LocalDate(val))
+                                    }else{
+                                        val=filter.params.hDueDt[1..-1]
+                                        lt('hDueDt',new LocalDate(val))
+                                    }
+                                }else{
+                                    val=filter.params.hDueDt[1..-1]
+                                    lt('hDueDt',new LocalDate(val))
                                 }
                             }
                         }
@@ -399,14 +487,17 @@ class RentController {
         	[rentInstance: new Rent(params)]
 			break
 		case 'POST':
-	        def rentInstance = new Rent(params)
+                Chronology hijri = IslamicChronology.getInstance()
+                def rentInstance = new Rent(params)
+                rentInstance.hStDt = new LocalDate(new LocalDate(params.stDt).toDate(),hijri)
+                rentInstance.hDueDt = new LocalDate(new LocalDate(params.dueDt).toDate(),hijri)
 	        if (!rentInstance.save(flush: true)) {
 	            render view: 'create', model: [rentInstance: rentInstance]
 	            return
 	        }
 
 			flash.message = message(code: 'default.created.message', args: [message(code: 'rent.label', default: 'Rent'), rentInstance.id])
-	        redirect action: 'show', id: rentInstance.id
+                        redirect action: 'show', id: rentInstance.id
 			break
 		}
     }
@@ -435,7 +526,10 @@ class RentController {
 	        [rentInstance: rentInstance]
 			break
 		case 'POST':
-	        def rentInstance = Rent.get(params.id)
+                Chronology hijri = IslamicChronology.getInstance()
+                def rentInstance = new Rent(params)
+                rentInstance.hStDt = new LocalDate(new LocalDate(params.stDt).toDate(),hijri)
+                rentInstance.hDueDt = new LocalDate(new LocalDate(params.dueDt).toDate(),hijri)
 	        if (!rentInstance) {
 	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'rent.label', default: 'Rent'), params.id])
 	            redirect action: 'list'

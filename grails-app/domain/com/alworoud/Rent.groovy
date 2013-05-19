@@ -7,6 +7,8 @@ class Rent {
     Unit unit
     LocalDate stDt
     LocalDate dueDt
+    LocalDate hStDt
+    LocalDate hDueDt
     BigDecimal rentAmt
     BigDecimal wtrCh=0
     BigDecimal otCh=0
@@ -17,6 +19,8 @@ class Rent {
         unit(unique:true,blank:false)
         stDt(blank:false)
         dueDt(blank:false)
+        hStDt(blank:false)
+        hDueDt(blank:false)
         rentAmt(blank:false)
         wtrCh(nullable:true)
         otCh(nullable:true)

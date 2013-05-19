@@ -31,6 +31,10 @@
 							<g:sortableColumn property="stDt" title="${message(code: 'rent.stDt.label', default: 'St Dt')}" />
 						
 							<g:sortableColumn property="dueDt" title="${message(code: 'rent.dueDt.label', default: 'Due Dt')}" />
+                                                        
+                                                        <g:sortableColumn property="hStDt" title="${message(code: 'rent.hStDt.label', default: 'Hijri St Dt')}" />
+						
+							<g:sortableColumn property="hDueDt" title="${message(code: 'rent.hDueDt.label', default: 'Hijri Due Dt')}" />
 						
 							<g:sortableColumn property="rentAmt" title="${message(code: 'rent.rentAmt.label', default: 'Rent Amt')}" />
 						

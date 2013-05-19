@@ -44,6 +44,20 @@
 							<dd><g:fieldValue bean="${rentInstance}" field="dueDt"/></dd>
 						
 					</g:if>
+                                  
+                                        <g:if test="${rentInstance?.hStDt}">
+						<dt><g:message code="rent.hStDt.label" default="Hijri St Dt" /></dt>
+						
+							<dd><g:fieldValue bean="${rentInstance}" field="hStDt"/></dd>
+						
+					</g:if>
+				
+					<g:if test="${rentInstance?.hDueDt}">
+						<dt><g:message code="rent.hDueDt.label" default="Hijri Due Dt" /></dt>
+						
+							<dd><g:fieldValue bean="${rentInstance}" field="hDueDt"/></dd>
+						
+					</g:if>
 				
 					<g:if test="${rentInstance?.rentAmt}">
 						<dt><g:message code="rent.rentAmt.label" default="Rent Amt" /></dt>

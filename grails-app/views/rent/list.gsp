@@ -41,6 +41,8 @@
 							<g:sortableColumn property="wtrCh" title="${message(code: 'rent.wtrCh.label', default: 'Wtr Ch')}" />
 						
 							<g:sortableColumn property="otCh" title="${message(code: 'rent.otCh.label', default: 'Ot Ch')}" />
+                                                        
+                                                        <g:sortableColumn property="rem" title="${message(code: 'rent.rem.label', default: 'Remarks')}" />
 						
 							<th></th>
 						</tr>
@@ -54,12 +56,18 @@
 							<td>${fieldValue(bean: rentInstance, field: "stDt")}</td>
 						
 							<td>${fieldValue(bean: rentInstance, field: "dueDt")}</td>
+                                                        
+                                                        <td>${fieldValue(bean: rentInstance, field: "hStDt")}</td>
+						
+							<td>${fieldValue(bean: rentInstance, field: "hDueDt")}</td>
 						
 							<td>${fieldValue(bean: rentInstance, field: "rentAmt")}</td>
 						
 							<td>${fieldValue(bean: rentInstance, field: "wtrCh")}</td>
 						
-							<td>${fieldValue(bean: rentInstance, field: "mntnCh")}</td>
+							<td>${fieldValue(bean: rentInstance, field: "otCh")}</td>
+                                                        
+                                                        <td>${fieldValue(bean: rentInstance, field: "rem")}</td>
 						
 							<td class="link">
 								<g:link action="show" id="${rentInstance.id}" class="btn btn-small">Show &raquo;</g:link>

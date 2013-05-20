@@ -58,12 +58,11 @@
                                                           <f:field property="dueDt">
                                                             <g:textField name="dueDt" id="duedatepicker" value="${rentInstance?.dueDt?.toDateTime()?.toDate()}" formatString="${joda.inputPattern(type: org.joda.time.LocalDate)}" required=""/>
                                                           </f:field>
-                                                          <f:field property="dur">
-                                                            <g:textField name="dur" id="dur" value="${rentInstance?.dur}" required=""/>
-                                                          </f:field>
+                                                          <f:field property="dur"/>
                                                           <f:field property="rentAmt"/>
                                                           <f:field property="wtrCh"/>
                                                           <f:field property="otCh"/>
+                                                          <f:field property="rem"/>
                                                         </f:with>
 							<div class="form-actions">
 								<button type="submit" class="btn btn-primary">

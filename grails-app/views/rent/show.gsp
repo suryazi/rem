@@ -87,10 +87,10 @@
 						
 					</g:if>
 				
-					<g:if test="${rentInstance?.totCh}">
-						<dt><g:message code="rent.totCh.label" default="Tot Ch" /></dt>
+					<g:if test="${rentInstance?.rem}">
+						<dt><g:message code="rent.rem.label" default="Remarks" /></dt>
 						
-							<dd><g:fieldValue bean="${rentInstance}" field="totCh"/></dd>
+							<dd><g:fieldValue bean="${rentInstance}" field="rem"/></dd>
 						
 					</g:if>
 				

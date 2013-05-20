@@ -10,11 +10,12 @@ class Rent {
     LocalDate dueDt
     LocalDate hStDt
     LocalDate hDueDt
-    Months dur
+    int dur=6
     BigDecimal rentAmt
     BigDecimal wtrCh=0
     BigDecimal otCh=0
-    BigDecimal totCh
+    //BigDecimal totCh
+    String rem
     DateTime dateCreated
     DateTime lastUpdated
     static constraints = {
@@ -27,10 +28,11 @@ class Rent {
         rentAmt(blank:false)
         wtrCh(nullable:true)
         otCh(nullable:true)
-        totCh(blank:false)
+        //totCh(blank:false)
+        rem(nullable:true)
     }
-    static mapping = {
+    /*static mapping = {  
         totCh formula: 'RENT_AMT+WTR_CH+OT_CH'
-    }
+    }*/
     static belongsTo = [unit:Unit]
 }

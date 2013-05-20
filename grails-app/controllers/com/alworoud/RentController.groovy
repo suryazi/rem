@@ -420,49 +420,6 @@ class RentController {
                         editable false
                     }
                 }
-                totCh {
-                    filterClosure {filter ->
-                        def val=filter.params.totCh,op
-                        if (val.length() > 1){
-                            op=filter.params.totCh[0]
-                            if (op == '='){
-                                val=filter.params.totCh[1..-1]
-                                eq('totCh',"${val}".toBigDecimal())
-                            }else if (op == '>'){
-                                if (val.length() > 2){
-                                    op=filter.params.totCh[0..1]
-                                    if  (op == '>='){
-                                        val=filter.params.totCh[2..-1]
-                                        ge('totCh',"${val}".toBigDecimal())
-                                    }else{
-                                        val=filter.params.totCh[1..-1]
-                                        gt('totCh',"${val}".toBigDecimal())
-                                    }
-                                }else{
-                                    val=filter.params.totCh[1..-1]
-                                    gt('totCh',"${val}".toBigDecimal())
-                                }
-                            }else if (op == '<'){
-                                if (val.length() > 2){
-                                    op=filter.params.totCh[0..1]
-                                    if (op == '<='){
-                                        val=filter.params.totCh[2..-1]
-                                        le('totCh',"${val}".toBigDecimal())
-                                    }else{
-                                        val=filter.params.totCh[1..-1]
-                                        lt('totCh',"${val}".toBigDecimal())
-                                    }
-                                }else{
-                                    val=filter.params.totCh[1..-1]
-                                    lt('totCh',"${val}".toBigDecimal())
-                                }
-                            }
-                        }
-                    }
-                    jqgrid {
-                        editable false
-                    }
-                }
                 version {
                     type 'version'
                 }
@@ -491,7 +448,9 @@ class RentController {
                 def rentInstance = new Rent(params)
                 rentInstance.hStDt = new LocalDate(new LocalDate(params.stDt).toDate(),hijri)
                 rentInstance.hDueDt = new LocalDate(new LocalDate(params.dueDt).toDate(),hijri)
-                rentInstance.dur = Months.monthsBetween(new LocalDate(new LocalDate(params.stDt).toDate(),hijri), new LocalDate(new LocalDate(params.dueDt).toDate(),hijri))
+                //println rentInstance.hDueDt
+                //println rentInstance.hDueDt.plusMonths((params.dur).toInteger())
+                //rentInstance.dur = Months.monthsBetween(new LocalDate(new LocalDate(params.stDt).toDate(),hijri), new LocalDate(new LocalDate(params.dueDt).toDate(),hijri))
                 //println new LocalDate(new LocalDate(params.dueDt).toDate(),hijri).plus(Months.monthsBetween(new LocalDate(new LocalDate(params.stDt).toDate(),hijri), new LocalDate(new LocalDate(params.dueDt).toDate(),hijri)))
 	        if (!rentInstance.save(flush: true)) {
 	            render view: 'create', model: [rentInstance: rentInstance]
@@ -528,11 +487,7 @@ class RentController {
 	        [rentInstance: rentInstance]
 			break
 		case 'POST':
-                Chronology hijri = IslamicChronology.getInstance()
-                def rentInstance = new Rent(params)
-                rentInstance.hStDt = new LocalDate(new LocalDate(params.stDt).toDate(),hijri)
-                rentInstance.hDueDt = new LocalDate(new LocalDate(params.dueDt).toDate(),hijri)
-                rentInstance.dur = Months.monthsBetween(new LocalDate(params.stDt), new LocalDate(params.dueDt))
+                def rentInstance = Rent.get(params.id)
 	        if (!rentInstance) {
 	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'rent.label', default: 'Rent'), params.id])
 	            redirect action: 'list'
@@ -551,6 +506,10 @@ class RentController {
 	        }
 
 	        rentInstance.properties = params
+                Chronology hijri = IslamicChronology.getInstance()
+                rentInstance.hStDt = new LocalDate(new LocalDate(params.stDt).toDate(),hijri)
+                rentInstance.hDueDt = new LocalDate(new LocalDate(params.dueDt).toDate(),hijri)
+                //rentInstance.dur = Months.monthsBetween(new LocalDate(params.stDt), new LocalDate(params.dueDt))
 
 	        if (!rentInstance.save(flush: true)) {
 	            render view: 'edit', model: [rentInstance: rentInstance]

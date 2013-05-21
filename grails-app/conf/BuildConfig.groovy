@@ -66,6 +66,9 @@ grails.project.dependency.resolution = {
         compile ":shiro:1.2.0-SNAPSHOT"
         compile ":bcrypt:1.0"
         compile ":simple-captcha:0.9.1"
+        
+        //Audit Logging
+        compile ":audit-logging:0.5.4"
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         runtime ":zipped-resources:1.0"

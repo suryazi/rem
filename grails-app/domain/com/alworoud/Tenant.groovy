@@ -3,6 +3,7 @@ package com.alworoud
 import org.joda.time.DateTime
 
 class Tenant {
+    static auditable = true
     String idNum
     String name
     String company

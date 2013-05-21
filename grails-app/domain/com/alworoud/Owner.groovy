@@ -3,6 +3,7 @@ package com.alworoud
 import org.joda.time.DateTime
 
 class Owner {
+    static auditable = true
     String name
     String idNum
     DateTime dateCreated

@@ -5,6 +5,7 @@ import org.joda.time.LocalDate
 import org.joda.time.DateTime
 
 class Rent {
+    static auditable = true
     Unit unit
     LocalDate stDt
     LocalDate dueDt

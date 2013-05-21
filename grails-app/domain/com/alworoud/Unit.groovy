@@ -3,6 +3,7 @@ package com.alworoud
 import org.joda.time.DateTime
 
 class Unit {
+    static auditable = true
     String unitId
     String unitType
     String desc

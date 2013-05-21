@@ -3,6 +3,7 @@ package com.alworoud
 import org.joda.time.DateTime
 
 class Property {
+    static auditable = true
     String propId
     String propType
     String street

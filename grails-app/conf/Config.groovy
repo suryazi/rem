@@ -404,7 +404,14 @@ easygrid {
     }
 }
 
+//Audit Logging
+auditLog.verbose = true
 
+auditLog {
+  actorClosure = { request, session ->
+     org.apache.shiro.SecurityUtils.getSubject()?.getPrincipal()
+  }
+}
 
 // Added by the Joda-Time plugin:
 grails.gorm.default.mapping = {

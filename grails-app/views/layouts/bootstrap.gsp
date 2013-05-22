@@ -38,6 +38,9 @@
                       <li><img src="${createLinkTo(dir:'images',file:'AlWoroud.jpg')}" class="img-polaroid" alt="Al Woroud"></li>
                     </ul>
                     <ul class="nav nav-pills">
+                      <li<%= request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : '' %>><a href="${createLink(uri: '/')}">Home</a></li>
+                    </ul>
+                    <ul class="nav nav-pills">
                       <li<%= "${controllerName}"=='owner'||"${controllerName}"=='property'||"${controllerName}"=='unit'||"${controllerName}"=='tenant'||"${controllerName}"=='rent'?' class="dropdown active"' : '' %>>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="/rem/owner/index">Real Estate<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -50,7 +53,7 @@
                       </li>
                     </ul>
                     <ul class="nav nav-pills">
-                      <li<%= "${controllerName}"=='auth'||"${controllerName}"=='signup'?' class="dropdown active"' : '' %>>
+                      <li<%= "${controllerName}"=='auth'||"${controllerName}"=='permission'||"${controllerName}"=='role'||"${controllerName}"=='signup'?' class="dropdown active"' : '' %>>
                         <a class="dropdown-toggle" data-toggle="dropdown" href="/rem/owner/index">User<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                           <li><a href="/rem/signup/reset">Reset password</a></li>
